@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../public/Montserrat-VariableFont_wght.ttf');
+    /* font-weight: 400; */
+    font-style: normal;
+  }
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+  }
+  body {
+    
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  input, button, textarea, select {
+    font: inherit;
+  }
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  #root, #__next {
+    isolation: isolate;
+  }
+  .main-container{
+    height: 100%;
+  /* max-width: 1400px;  */
+  margin: auto;
+  width: 100%;
+  padding: 0 15px;
+  }
+
+  .navbar-container > div{
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px black solid;
+  }
+
+  .navbar-container button{
+    margin: 0px 10px;
+    text-transform: uppercase;
+    border:none;
+    background: none;
+  }
+  
+  .first-hero-top{
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+  }
+  /* CENTER WITH MARGIN  */
+  .first-hero-top h1{
+    display: inline-flex;
+    position: relative;
+    /* margin: auto; */
+    font-size: 6.35vw;
+    font-weight: 700;
+    text-align: center;
+  }
+  .first-hero-top span{
+    font-size: 3vw;
+    vertical-align: text-top;
+  }
+  .first-hero-top p{
+    position: relative;
+    left: 0;
+    font-size: 1.5em;
+  }
+  /* END */ 
+  .first-hero-bottom{
+    display:  flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .first-hero-bottom .text{
+    width: 29%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .first-hero-bottom .image{
+    width: 69%;
+    display: flex;
+    justify-content: center;
+  }
+  .first-hero-bottom .text .origin-date{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .first-hero-bottom h3{
+    margin-top: 3%;
+    font-size: 2em;
+    font-weight: 500;
+  }
+
+  .first-hero-bottom p{
+    font-size: 13px;
+  }
+
+  .first-hero-bottom .description{
+    margin-bottom: 5%;
+  }
+
+  .first-hero-bottom button{
+    width: 10%;
+    height: 50%;
+    display: flex;
+    outline: none;
+    background: url(/link-button.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+  }
+  
+  
