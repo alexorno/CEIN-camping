@@ -82,6 +82,7 @@
     display:  flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 1%;
   }
   
   .first-hero-bottom .text{
@@ -116,16 +117,94 @@
   }
 
   .first-hero-bottom button{
+    cursor:pointer;
     width: 10%;
-    height: 50%;
     display: flex;
+    background: none;
     outline: none;
-    background: url(/link-button.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
     border: none;
     padding: 0;
     margin-left: auto;
   }
-  
+
+  .hero-second-section{
+    display:flex;
+  }
+
+  .hero-second-section .cta-image{
+    width: 50%;
+    background-image: url(/bg-second-section.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    display: flex;
+  }
+
+  .hero-second-section .container{
+    margin: auto 20%;
+  }
+
+  .hero-second-section .cta-image h4{
+    font-size: 4em;
+    line-height: 95%;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+  }
+
+  .hero-second-section .cta-image p{
+    font-size: 13px;
+  margin-bottom: 5%;
+  }
+
+  .main-btn{
+    width: fit-content;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: 1px white solid;
+    border-radius: 50px;
+    font-size: 13px;
+    padding: 4% 13%;
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;
+  }
+
+  .hero-second-section .content{
+    width: 50%;
+  }
+
+  .hero-second-section .content .post{
+    margin: 15px;
+  }
+
+  .hero-second-section .content .post > p{
+    font-size: 13px;
+    margin: 15px 0;
+  }
+  .hero-second-section .content .post img{
+    width: 100%;
+  }
+
+  .hero-second-section .content .post .text{
+    display: flex;
+    margin: 5% 0;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  }  
+
+  .hero-second-section .content .post .text h6{
+    display: inline;
+    width: 47%;
+    font-size: 2em;
+    line-height: 100%;
+  }
+
+  .hero-second-section .content .post .text p{
+    width: 47%;
+    font-size: 13px;
+  }
+
   

@@ -25,7 +25,9 @@ export const HeroBanner = () => {
                                 CEIN has released yet another playful bonfire stand.
                                 Its name is "Ringwo Moyase".As you can see, this bonfire stand is modeled after the ring, a stage familiar to boxing and professional wrestling.
                             </p>
-                                <button />
+                                <button>
+                                    <img src="/link-button.svg" />
+                                </button>
                         </div>
                     </div>
 
