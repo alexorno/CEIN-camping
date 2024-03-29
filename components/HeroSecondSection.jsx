@@ -33,6 +33,15 @@ export const HeroSecondSection = () => {
                         <p>Saiyuen has had a great harvest this year! In our aquaponic pool, we have a variety of edible fish, including Crucian Carp, Tilapia, and Jade Perch. Especially Jade Perch is the treasure among the freshwater fish. During the Big Catch Festival at Saiyuen, campers can enjoy fishing or even try cooking their own catch in the wild. Come and experience the thrill of catching and cooking your own fish in the great outdoors at Saiyuen!</p>
                     </div>
                 </div>
+
+                <div className="feature">
+                    <p>Feature</p>
+                    <div className="feature-product">
+                        <img src="/feature-product.png" />
+                        <p className="title">Lightweight Waterproof Camping Tent</p>
+                        <p className="price">$ 259</p>
+                    </div>    
+                </div>
              </div>
         </div>  
     )

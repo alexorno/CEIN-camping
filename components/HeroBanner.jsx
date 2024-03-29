@@ -1,13 +1,26 @@
+"use client"
 import React from "react";
+import { useState, useEffect } from "react";
+import { sql } from "@vercel/postgres";
 
-export const HeroBanner = () => {
+
+  
+
+export const HeroBanner = async () => {    
+    
+
+    const { rows } = await sql `Select * from products`;
+
+    console.log('rows', rows)
+    
+
 
     return (
         <>
             <div className="main-container">
                 <div className="first-hero-top">
                     <h1>Gear up for Great Outdoors<span>&#174;</span></h1>
-                    <p>Premium Camping Gear</p>
+                    <p>Premium Camping Gear </p>
                 </div>
                 <div className="first-hero-bottom">
                     <div className="text">

@@ -142,11 +142,12 @@
   }
 
   .hero-second-section .container{
+    width: 60%;
     margin: auto 20%;
   }
 
   .hero-second-section .cta-image h4{
-    font-size: 4em;
+    font-size: 3.5em;
     line-height: 95%;
     text-transform: uppercase;
     margin-bottom: 3%;
@@ -192,7 +193,6 @@
     margin: 5% 0;
     flex-direction: row;
     justify-content: space-between;
-    
   }  
 
   .hero-second-section .content .post .text h6{
@@ -207,4 +207,63 @@
     font-size: 13px;
   }
 
+  .hero-second-section .content .feature {
+    margin:15px;
+  }
+  .hero-second-section .content .feature > p{
+    font-size: 13px;
+    margin: 25px 0;
+  }
+
+  .hero-second-section .content .feature .feature-product {
+    margin-right: 2%;
+    width: 48%;
+  }
+
+  .hero-second-section .content .feature .feature-product .title{
+    font-size: 12px;
+    margin-top: 5%;
+  }
+
+  .hero-second-section .content .feature .feature-product .price{
+    font-size: 12px;
+  }
+
+  .banner-cta-shop{
+    color: white;
+    background-image: url(/hero-banner-shop.png) ;
+    background-size: cover;
+  }
+  .banner-cta-shop .container{
+    width: 40%;
+    padding: 5% 1%;
+  }
+
+  .banner-cta-shop .container > *{
+    margin-bottom: 20px;
+  }
   
+  .banner-cta-shop h2{
+    font-size: 2.5em;
+    font-weight: 500;
+    line-height: 95%;
+    text-transform: uppercase;
+  }
+
+  .banner-cta-shop p{
+    font-size: 13px;
+  }
+
+  .admin-login{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: min-content;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .admin-login input{
+    margin-bottom: 4%;
+  }
