@@ -2,10 +2,37 @@
 import React, { useEffect, useState } from 'react';
 
 const AdminLogin = () => {
-  const [formValues, setFormValues] = useState({})
-  const [responseMessage, setResponseMessage] = useState('')
   const [auth, setAuth] = useState(false)
 
+  useEffect(() => {
+    fetch('api/isAdmin')
+    .then((res) => res.json())
+    .then((answer) => {
+        setAuth(answer)
+      })
+  }, [auth])
+
+
+  const setAuthTrue = () => {
+    setAuth(true)
+  };
+
+  const setAuthFalse = () => {
+    setAuth(false)
+  };
+
+
+  if(!auth){
+    return (<LoginPage setAuthTrue={setAuthTrue}/>)
+  }else{
+    return (<Dashboard setAuthFalse={setAuthFalse}/>)
+  }
+}
+
+const LoginPage = ({setAuthTrue}) => {
+  const [formValues, setFormValues] = useState({})
+  const [responseMessage, setResponseMessage] = useState({})
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -14,7 +41,7 @@ const AdminLogin = () => {
     setFormValues(formObject)
   }
 
-  useEffect( () => {
+  useEffect(() => {
     fetch('/api/adminLogin', {
       method: "POST",
       body: JSON.stringify(formValues),
@@ -22,18 +49,12 @@ const AdminLogin = () => {
       .then((res) => res.json())
       .then((data) => {
         setResponseMessage(data)
+        if(data.status == 200){
+          setAuthTrue();
+          console.log('123')
+        }
       })
-
   }, [formValues])
-
-  useEffect(() => {
-    fetch('api/isAdmin')
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data)
-        setResponseMessage(`${data}`)
-      })
-  }, [])
 
   return (
     <form className='admin-login' onSubmit={handleSubmit}>
@@ -42,9 +63,47 @@ const AdminLogin = () => {
         <label htmlFor="password">Password:</label>
         <input type='text' id='password' name='password'/>
         <input type='submit' value="Submit"/>
-        <p>{responseMessage}</p>
+        <p>{responseMessage.message}</p>
     </form>
   )
 }
+
+const Dashboard = ({setAuthFalse}) => {
+  const [logOut, setLogOut] = useState(false);
+  
+    useEffect(() => {
+      if(logOut){
+        setLogOut(false);
+        fetch('/api/adminLogOut', {method: 'POST'})
+          .then((res) => {
+            if(res.status == 200){
+              setAuthFalse();
+            }
+            return res.json()})
+          .then((data) => console.log(data))
+      }
+    }, [logOut])
+  
+  return (
+  <>
+    <form className='admin-login'>
+      <h3>Add product</h3>
+      <label htmlFor="name">Name:</label>
+      <input type='text' name='name'/>
+      <label htmlFor="description">Description:</label>
+      <input type='text' name='description'/>
+      <label htmlFor="Price">Price:</label>
+      <input type='text' name='Price'/>
+      <input type='submit' value="Submit"/>
+    </form>
+
+    <button className='main-btn'
+    style={{color: 'black', margin: 'auto', display: 'flex'}}
+    onClick={() => setLogOut(true)}
+    >Log Out</button>
+  </>
+  )
+}
+
 
 export default AdminLogin
