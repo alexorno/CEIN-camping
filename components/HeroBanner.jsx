@@ -1,19 +1,14 @@
 "use client"
 import React from "react";
 import { useState, useEffect } from "react";
-import { sql } from "@vercel/postgres";
 
 
   
 
 export const HeroBanner = async () => {    
+    // const { rows } = await sql `Select * from products`;
+    // console.log('rows', rows)
     
-
-    const { rows } = await sql `Select * from products`;
-
-    console.log('rows', rows)
-    
-
 
     return (
         <>

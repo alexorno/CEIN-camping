@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import { Navbar, HeroBanner, HeroSecondSection, HeroBannerShop } from "../../components";
+import { Navbar, HeroBanner, HeroSecondSection, HeroBannerShop, ProductList } from "../../components";
 
 export default function Home() {
   
@@ -9,6 +9,7 @@ export default function Home() {
       <HeroBanner />
       <HeroSecondSection />
       <HeroBannerShop />
+      <ProductList />
     </main>
   );
 }

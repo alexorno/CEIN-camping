@@ -172,6 +172,20 @@
     white-space: nowrap;
   }
 
+  .main-black-btn{
+    width: fit-content;
+    cursor: pointer;
+    color: black;
+    background: none;
+    border: 1px black solid;
+    border-radius: 50px;
+    font-size: 13px;
+    padding: 4% 13%;
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;
+  }
+
   .hero-second-section .content{
     width: 50%;
   }
@@ -266,4 +280,43 @@
 
   .admin-login input{
     margin-bottom: 4%;
+  }
+
+  .products{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .products .main-product{
+    width: 25%;
+    height: 500px;
+    border: black 1px solid;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+  }
+
+  .products a{
+    color: black;
+    text-decoration: none;
+  }
+
+  .products .main-product img{
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+  }
+
+  .products .main-product .category-price{
+    display: flex;
+    justify-content: space-between;
+    margin: 2% 0;
+  }
+
+  .products .main-product p{
+    font-size: 13px;
+  }
+
+  .products .main-product button{
+    margin-top: 25%;
   }

@@ -1,5 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
+import Dashboard from './Dashboard';
+
 
 const AdminLogin = () => {
   const [auth, setAuth] = useState(false)
@@ -51,7 +53,6 @@ const LoginPage = ({setAuthTrue}) => {
         setResponseMessage(data)
         if(data.status == 200){
           setAuthTrue();
-          console.log('123')
         }
       })
   }, [formValues])
@@ -68,42 +69,7 @@ const LoginPage = ({setAuthTrue}) => {
   )
 }
 
-const Dashboard = ({setAuthFalse}) => {
-  const [logOut, setLogOut] = useState(false);
-  
-    useEffect(() => {
-      if(logOut){
-        setLogOut(false);
-        fetch('/api/adminLogOut', {method: 'POST'})
-          .then((res) => {
-            if(res.status == 200){
-              setAuthFalse();
-            }
-            return res.json()})
-          .then((data) => console.log(data))
-      }
-    }, [logOut])
-  
-  return (
-  <>
-    <form className='admin-login'>
-      <h3>Add product</h3>
-      <label htmlFor="name">Name:</label>
-      <input type='text' name='name'/>
-      <label htmlFor="description">Description:</label>
-      <input type='text' name='description'/>
-      <label htmlFor="Price">Price:</label>
-      <input type='text' name='Price'/>
-      <input type='submit' value="Submit"/>
-    </form>
 
-    <button className='main-btn'
-    style={{color: 'black', margin: 'auto', display: 'flex'}}
-    onClick={() => setLogOut(true)}
-    >Log Out</button>
-  </>
-  )
-}
 
 
 export default AdminLogin
