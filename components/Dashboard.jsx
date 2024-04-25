@@ -8,7 +8,16 @@ export const Dashboard = ({setAuthFalse}) => {
     const [formValues, setFormValues] = useState();
     const [sendLoading, setSendLoading] = useState(false);
     const [responseFileSend, setResponseFileSend] = useState('');
-    
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+      fetch('/api/getCategories')
+        .then((res) => res.json())
+        .then((data) => {
+            setCategories(data)
+        });
+    }, [])
+          
     // rewrite in const, no need for effect
     useEffect(() => {
     if(logOut){
@@ -43,7 +52,7 @@ export const Dashboard = ({setAuthFalse}) => {
         // getting values from form and formatting
         const formData = new FormData(event.target);
         const formObject = Object.fromEntries(formData);
-        // setFormValues(formObject)
+        // console.log(formObject)
         delete formObject.file;
         formObject.urls = urlList;
 
@@ -59,7 +68,6 @@ export const Dashboard = ({setAuthFalse}) => {
 
     }
 
-    // console.log('urls:' ,urlList)
     
     return (
     <>
@@ -72,6 +80,14 @@ export const Dashboard = ({setAuthFalse}) => {
         <input type='text' name='description'/>
         <label htmlFor="Price">Price:</label>
         <input type='text' name='price'/>
+
+          <label htmlFor="categories">Choose a category:</label>
+          <select name="categoryId" >
+            {categories.map((category) => (
+              <option value={category.id} key={category.id}>{category.name}</option>
+            ))}
+          </select>
+
       {sendLoading ? 
       <p style={{display: 'flex', justifyContent: 'center'}}>Loading....</p> 
       : 
