@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminLogin from '../../../components/AdminLogin.jsx';
+import AdminLogin from '../../../components/AdminLogin.jsxjsx';
 
 const page = () => {
 
