@@ -19,6 +19,9 @@ export default function AvatarUploadPage({sendUrlToParent}) {
       array1.push(newBlob)
     }
 
+    
+
+    console.log(array1, '123')
     sendUrlToParent(array1)
     }
 

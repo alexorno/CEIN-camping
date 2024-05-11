@@ -1,10 +1,11 @@
 // import Image from "next/image";
-import { HeroBanner, HeroSecondSection, HeroBannerShop, ProductList } from "../../components";
+import { Navbar, HeroBanner, HeroSecondSection, HeroBannerShop, ProductList } from "../../components";
 
 export default function Home() {
   
   return (
     <main >
+      <Navbar />
       <HeroBanner />
       <HeroSecondSection />
       <HeroBannerShop />

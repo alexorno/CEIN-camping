@@ -6,6 +6,9 @@ import { useState, useEffect } from "react";
   
 
 export const HeroBanner = async () => {    
+    // const { rows } = await sql `Select * from products`;
+    // console.log('rows', rows)
+    
 
     return (
         <>

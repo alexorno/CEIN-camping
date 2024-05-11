@@ -39,10 +39,6 @@
   padding: 0 15px;
   }
 
-  .navbar-container{
-    position: relative;
-  }
-
   .navbar-container > div{
     padding: 1%;
     display: flex;
@@ -57,31 +53,7 @@
     border:none;
     background: none;
   }
-
-  .nav-categories{
-    display: flex;
-    flex-wrap: wrap;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background-color: white;
-    width: 100%;
-    z-index: 1;
-  }
-
-  .nav-categories .nav-category{
-    border: 2px solid rgb(226, 226, 226);
-    padding: 3%;
-    width: 16.66%;
-    text-align: center;
-  }
   
-  .nav-categories .nav-category img{
-    height: 100px;
-    object-fit: contain;
-    margin: auto;
-  }
-
   .first-hero-top{
     width: 100%;
     margin-top: 2%;
@@ -347,17 +319,4 @@
 
   .products .main-product button{
     margin-top: 25%;
-  }
-
-  .category-title{
-    margin: 3% 1%;
-  }
-
-  .category-name {
-    display: flex;
-    align-items: center;
-  }
-
-  .category-name img{
-    height: 2rem;
   }
