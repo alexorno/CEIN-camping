@@ -8,7 +8,7 @@ export const Product = ({product}) => {
 
   return (
     <div className='main-product'>
-        <Link href={`products/${productid}`}>
+        <Link href={`/products/${productid}`}>
             {/* <img src={product.images[0].url} /> */}
             { images ? <img src={images[0].url} /> : 'no image'}
             <div className='category-price'>

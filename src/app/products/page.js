@@ -1,14 +1,13 @@
 'use client'
 import React, {useState, useEffect} from 'react';
-import { Product } from '../../../components/Productuct';
-// import 
-
+import { Product } from '../../../components/Product';
+import { sql } from '@vercel/postgres';
 
 const index = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('http://127.0.0.1/api/getProducts')
+        fetch('http://localhost:3000/api/getProducts')
         .then((res) => res.json())
         .then((data) => {
             setProducts(data)
