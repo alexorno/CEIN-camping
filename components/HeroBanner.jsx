@@ -37,7 +37,7 @@ export const HeroBanner = async () => {
                     </div>
 
                     <div className="image">
-                        <img src="hero-first.png">
+                        <img src="/hero-first.png">
                         </img>
                     </div>
                 </div>
