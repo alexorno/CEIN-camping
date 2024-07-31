@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 
   export default async function Page({ params }) {
     const product = await getProductById(params.productId);
-    console.log(product)
+    // console.log(product)
 
     // preparing array for gallery
     const images = []

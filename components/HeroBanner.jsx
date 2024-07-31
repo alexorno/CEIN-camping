@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
   
 
-export const HeroBanner = async () => {    
+export const HeroBanner = () => {    
 
     return (
         <>
