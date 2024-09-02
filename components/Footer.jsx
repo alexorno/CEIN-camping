@@ -64,7 +64,11 @@ export const Footer = () => {
                     <br />
                     Add the account as a friend and send message saying "I would like to receive online service"
                 </p>
-                <button className='main-btn'>Contact Us</button>
+                <button className='main-black-btn'>
+                    <a href='https://www.whatsapp.com'>
+                    Contact Us    
+                    </a>
+                </button>
             </div>
         </div>
     </div>

@@ -17,12 +17,12 @@ const index = () => {
 
 
     return (
-        <>
+    <>
         <div className='category-title'>
             <p>Shop Collection</p>
             <div className='category-name'>
                 <img src='/arrow-right.svg'/>
-                <h1>TENT</h1>
+                <h1>All products</h1>
             </div>
         </div>
             <div className='products'>
@@ -31,7 +31,7 @@ const index = () => {
                 })
                 }
             </div>
-        </>
+    </>
     )
 }
 

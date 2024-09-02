@@ -7,7 +7,7 @@ export const Dashboard = ({setAuthFalse}) => {
     const [logOut, setLogOut] = useState(false);
     const [formValues, setFormValues] = useState();
     const [sendLoading, setSendLoading] = useState(false);
-    const [responseFileSend, setResponseFileSend] = useState('');
+    const [responseFileSend, setResponseFileSend] = useState();
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -55,7 +55,6 @@ export const Dashboard = ({setAuthFalse}) => {
         // console.log(formObject)
         delete formObject.file;
         formObject.urls = urlList;
-
         fetch('/api/uploadProduct', {
             method: "POST",
             body: JSON.stringify(formObject),
@@ -68,7 +67,7 @@ export const Dashboard = ({setAuthFalse}) => {
 
     }
 
-    
+
     return (
     <>
       <form className='admin-login' onSubmit={() => fileSend(event)}>
@@ -77,7 +76,15 @@ export const Dashboard = ({setAuthFalse}) => {
         <label htmlFor="name">Name:</label>
         <input type='text' name='name'/>
         <label htmlFor="description">Description:</label>
-        <input type='text' name='description'/>
+        <textarea type='text' name='description'/>
+        <label htmlFor="color">Color:</label>
+        <input type='text' name='color'/>
+        <label htmlFor="material">Material:</label>
+        <input type='text' name='material'/>
+        <label htmlFor="occupcapacity">Occupancy Capacity:</label>
+        <input type='number' name='occupcapacity'/>
+        <label htmlFor="dimensions">Dimensions:</label>
+        <input type='text' name='dimensions'/>
         <label htmlFor="Price">Price:</label>
         <input type='text' name='price'/>
 
@@ -87,12 +94,22 @@ export const Dashboard = ({setAuthFalse}) => {
               <option value={category.id} key={category.id}>{category.name}</option>
             ))}
           </select>
+          <label htmlFor="seasons">Choose a Season:</label>
+          <select name="seasons" >
+            <option value='null'>Not Applicable</option>
+            <option value='summer'>Summer</option>
+            <option value='fall'>Fall</option>
+            <option value='winter'>Winter</option>
+            <option value='spring'>Spring</option>
+          </select>
+          <br />
+          <input type='reset'/>
 
       {sendLoading ? 
       <p style={{display: 'flex', justifyContent: 'center'}}>Loading....</p> 
       : 
       <input type='submit' value="Submit"/>}
-      <p>{responseFileSend}</p>
+      <p>{JSON.stringify(responseFileSend)}</p>
       </form>
   
   

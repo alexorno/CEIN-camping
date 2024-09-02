@@ -31,6 +31,20 @@ export async function generateStaticParams() {
       })
     }
 
+    const lastThreeImages = () => {
+      console.log(images.length)
+      if(images.length > 3){
+        return [<img src={images[images.length-1].original} />,
+        <img src={images[images.length-2].original} />,
+         <img src={images[images.length-3].original} />]
+      }else{
+        return [<img src={images[0].original} />,
+         <img src={images[0].original} />,
+          <img src={images[0].original} />]
+      }
+    }
+    
+
     
     return (
       <>
@@ -60,39 +74,42 @@ export async function generateStaticParams() {
             </div>
           </div>
         </div>
-
+{/* add real data from database */}
         <div className="product-presentation">
-          <img src='/tent-detail-assembly.jpeg'/>
-          <img src='/tent-interior.jpg'/>
-          <img src='/tent-storage.jpeg'/>
+          {lastThreeImages()}
           <div className="product-presentation-text">
-            <h6>Rain-Ready Convenience</h6>
-            <p>Discover all-weather versatility! With the specially designed flysheet (compatible with one-touch tent
-(M) TF3-619-TN), your one-touch tent becomes rain-resistant, offering added protection and peace of mind during your outdoor adventures.</p>
+            <h6>Convenience</h6>
+            <p>
+              {product.description}
+            </p>
           </div>
         </div>
 
         <div className="product-details">
           <div className="photo">
-            <img src="/tent-interior.jpg" />
+            <img src={images[1] && images[1].original || images[0] && images[0].original} />
           </div>
           <div className="details">
             <ul>
               <li>
                 <p>Color</p>
-                <p>Brown</p>
+                <p>{product.color || 'As shown'}</p>
               </li>
               <li>
                 <p>Material</p>
-                <p>Nylon, Aluminium, fabric</p>
+                <p>{product.material || '-'}</p>
               </li>
               <li>
                 <p>Occupant Capacity</p>
-                <p>8</p>
+                <p>{product.occupcapacity || 'Not applicable'}</p>
+              </li>
+              <li>
+                <p>Seasons</p>
+                <p>{product.seasons || "Not applicable"}</p>
               </li>
               <li>
                 <p>Product Dimensions</p>
-                <p>148.8"L x 148.8"W x 93.6"H</p>
+                <p>{product.dimensions || '-'}</p>
               </li>
             </ul>
             <p className="disclaimer">

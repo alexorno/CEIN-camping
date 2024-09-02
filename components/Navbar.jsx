@@ -10,22 +10,22 @@ export const Navbar = () => {
     // ref to have current state, not initial
     const showCategoryRef = useRef(showCategory)
     useEffect(() => {
-      showCategoryRef.current = showCategory;
+        showCategoryRef.current = showCategory;
     }, [showCategory])
     // click outside element to close it
     useEffect(() => {
         function handleClickOutside(event) {
             if (showCategoryRef.current && category.current && !category.current.contains(event.target) && !categoryBtn.current.contains(event.target)) {
                 setShowCategory(false)
-          }
+            }
         }
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
-          document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
-      }, [category]);
-    
-    
+    }, [category]);
+
+
 
     return (
         <nav className="navbar-container" >
@@ -37,15 +37,17 @@ export const Navbar = () => {
                 </div>
                 <div className="">
                     {/* <Link href='/products'>shop</Link> */}
-                    <button onClick={() => setShowCategory(true)} ref={categoryBtn}>Shop</button>
-                    {showCategory ? <CategoriesList ref={category} closeCategory={() => setShowCategory(false)}/> : <></>}
+                    <button onClick={() => setShowCategory(!showCategory)} ref={categoryBtn}>Shop</button>
+                    {showCategory ? <CategoriesList ref={category} closeCategory={() => setShowCategory(false)} /> : <></>}
                     <button>events</button>
                     <button>collections</button>
                     <button>journal</button>
                 </div>
                 <div>
                     <button>search</button>
-                    <button>login</button>
+                    <Link href={'/dashboard'}>
+                        <button>login</button>
+                    </Link>
                 </div>
             </div>
         </nav>
@@ -58,11 +60,11 @@ const CategoriesList = forwardRef(function MyInput(props, ref) {
 
     useEffect(() => {
         fetch('/api/getCategories')
-          .then((res) => res.json())
-          .then((data) => {
-            setCategories(data)
-          })
-      }, [])
+            .then((res) => res.json())
+            .then((data) => {
+                setCategories(data)
+            })
+    }, [])
 
     return (
         <div className="nav-categories" ref={ref}>
@@ -70,12 +72,18 @@ const CategoriesList = forwardRef(function MyInput(props, ref) {
                 return (
                     <div className="nav-category" key={category.id}>
                         <Link href={'/categories/' + category.id}>
-                        <img src={category.image} />
-                        <p>{category.name}</p>
+                            <img src={category.image} />
+                            <p>{category.name}</p>
                         </Link>
                     </div>
                 )
             })}
+            <div className="nav-category">
+                <Link href={'/products'}>
+                    <img src={'/outdoor-trip-navigation-svgrepo-com.svg'} />
+                    <p>All products</p>
+                </Link>
+            </div>
         </div>
     )
 });

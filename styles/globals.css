@@ -14,7 +14,9 @@
   font-weight: 400;
 }
 body {
-  
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -58,6 +60,10 @@ padding: 0 15px;
   background: none;
 }
 
+.navbar-container button:active{
+  font-weight: 500;
+}
+
 .nav-categories{
   display: flex;
   flex-wrap: wrap;
@@ -85,13 +91,18 @@ padding: 0 15px;
 .nav-categories .nav-category a{
   color:black;
   text-decoration: none;
-  font-size: 0.9em;
+}
+
+.nav-categories .nav-category p{
+  margin-top: 5%;
+  font-size: 0.8em;
+  font-weight: 500;
 }
 
 .footer{
+  margin-top: auto;
   background: rgb(185, 185, 185);
   padding: 10% 0;
-  
 }
 
 .footer .main-container{
@@ -130,6 +141,7 @@ padding: 0 15px;
 }
 .footer .social-media img{
   height: 20px;
+  width: auto;
 }
 
 .footer .footer-navigation{
@@ -168,9 +180,7 @@ padding: 0 15px;
   width: 30%;
  }
 
- .footer .footer-support .main-btn{
-  color: black;
-  border-color: black;
+ .footer .footer-support .main-black-btn{
   margin-top: 10%;
  }
 
@@ -307,6 +317,11 @@ margin-bottom: 5%;
   white-space: nowrap;
 }
 
+.main-black-btn a{
+  text-decoration: none;
+  color:black;
+}
+
 .main-btn-black-bg{
   width: fit-content;
   cursor: pointer;
@@ -406,14 +421,13 @@ margin-bottom: 5%;
 .admin-login{
   display: flex;
   flex-direction: column;
-  height: 100vh;
   width: min-content;
-  margin: auto;
+  margin: 5% auto;
   align-content: center;
   justify-content: center;
 }
 
-.admin-login input{
+.admin-login input, .admin-login textarea, .admin-login select{
   margin-bottom: 4%;
 }
 
@@ -527,7 +541,7 @@ margin-bottom: 5%;
 .product-presentation{
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
-  grid-template-rows: repeat(2, 1fr); 
+  /* grid-template-rows: repeat(2, 1fr);  */
   grid-column-gap: 0px;
   grid-row-gap: 0px; 
 }

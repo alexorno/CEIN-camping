@@ -20,7 +20,6 @@ export async function generateStaticParams() {
     const products = await getProductsWithinCategory(params.id);
     const categoryNameQuery = await sql `SELECT name FROM categories WHERE id=${params.id}`
     const categoryName = categoryNameQuery.rows[0].name;
-    console.log(categoryName)
     if(products === 'no data'){
         return "Sorry, but there's no products within this category"
     }
