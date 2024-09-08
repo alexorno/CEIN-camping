@@ -2,18 +2,30 @@
 import React, {useState, useEffect} from 'react';
 import { Product } from '../../../components/Product';
 import { sql } from '@vercel/postgres';
+import getSortedProducts from '../../../utils/getSortedProducts';
+import {FilterForProducts} from '../../../components/FilterForProducts.jsx';
+
+const getProducts = async () => {
+   return (await getSortedProducts('ascDate'))
+}
 
 const index = () => {
     const [products, setProducts] = useState([])
+    const [filter, setFilter] = useState('');
 
+    // getting products with filter or not
     useEffect(() => {
-        fetch('http://localhost:3000/api/getProducts')
-        .then((res) => res.json())
-        .then((data) => {
-            setProducts(data)
+        async function fetchData() {
+            if(filter.length === 0){
+                const data = await getProducts()
+                    .then((res) => setProducts(res));
+            }else{
+                const data = await getSortedProducts(filter)
+                    .then((res) => setProducts(res));
             }
-        )
-    }, [])
+        }
+        fetchData();
+      }, [filter]); 
 
 
     return (
@@ -25,12 +37,13 @@ const index = () => {
                 <h1>All products</h1>
             </div>
         </div>
-            <div className='products'>
-                {products.map((product) => {
-                    return <Product product={product} key={product.productid}/>
-                })
-                }
-            </div>
+        <FilterForProducts filter={filter} setFilter={setFilter}/>
+        <div className='products'>
+            {products.map((product) => {
+                return <Product product={product} key={product.productid}/>
+            })
+            }
+        </div>
     </>
     )
 }

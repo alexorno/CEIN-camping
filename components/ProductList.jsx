@@ -2,9 +2,11 @@
 import React, {useState, useEffect} from 'react';
 import { Product } from './Product';
 import Link from "next/link";
+import getSortedProducts from '../utils/getSortedProducts';
 
 export const ProductList = () => {
     const [products, setProducts] = useState([])
+    const [newProducts, setNewProducts] = useState([])
 
     useEffect(() => {
         fetch('/api/getProducts')
@@ -14,6 +16,15 @@ export const ProductList = () => {
             }
         )
     }, [])
+
+// getting new Products
+    useEffect(() => {
+        async function fetchData() {
+            setNewProducts(await getSortedProducts('descDate'))
+        }
+        fetchData()
+      }, []); 
+    
 
 
     return (
@@ -29,7 +40,7 @@ export const ProductList = () => {
                         </Link>
                     </button>
                 </div>
-                {products.slice(0,7).map((product) => {
+                {newProducts.slice(0,7).map((product) => {
                     return <Product product={product} key={product.productid}/>
                 })
                 }
@@ -38,7 +49,11 @@ export const ProductList = () => {
             <div className='main-product'>
                 <h6 style={{fontSize: '1.5rem', marginTop: '10px'}}>Best Seller</h6>
                 <p>Gear up for your great outdoor</p>
-                <button className='main-black-btn'>Shop All</button>
+                <Link href={`/products`}>
+                <button className='main-black-btn'>
+                    Shop All
+                </button>
+                </Link>
             </div>
             {products.slice(0,7).map((product) => {
                 return <Product product={product} key={product.productid}/>

@@ -3,11 +3,6 @@ import { FLIGHT_PARAMETERS } from "next/dist/client/components/app-router-header
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-export default function Gallery({images}){
-    console.log(images)
-      
-      
-          return <ImageGallery items={images} showPlayButton={false} showThumbnails={false} />;
-    
-      
+export default function Gallery({images}){      
+    return <ImageGallery items={images} showPlayButton={false} showThumbnails={false} />;    
 }

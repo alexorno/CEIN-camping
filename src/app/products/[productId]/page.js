@@ -1,12 +1,12 @@
 "use server"
 import { sql } from "@vercel/postgres";
-import getProducts from "../../../../utils/getProducts";
+import getSortedProducts from "../../../../utils/getProducts";
 import getProductById from "../../../../utils/getProductInfoById";
 import Gallery from '../../../../utils/Gallery.jsx'
 
 
 export async function generateStaticParams() {
-  const products = await getProducts();
+  const products = await getSortedProducts();
 
    return products.map((product) => ({
     id: (product.productid).toString(),
@@ -32,15 +32,15 @@ export async function generateStaticParams() {
     }
 
     const lastThreeImages = () => {
-      console.log(images.length)
+
       if(images.length > 3){
         return [<img src={images[images.length-1].original} />,
-        <img src={images[images.length-2].original} />,
-         <img src={images[images.length-3].original} />]
+                <img src={images[images.length-2].original} />,
+                <img src={images[images.length-3].original} />]
       }else{
         return [<img src={images[0].original} />,
-         <img src={images[0].original} />,
-          <img src={images[0].original} />]
+                <img src={images[0].original} />,
+                <img src={images[0].original} />]
       }
     }
     
