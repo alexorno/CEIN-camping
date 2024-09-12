@@ -59,7 +59,9 @@ const CategoriesList = forwardRef(function MyInput(props, ref) {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        fetch('/api/getCategories')
+        fetch('/api/getCategories',{
+            cache: "force-cache",
+        })
             .then((res) => res.json())
             .then((data) => {
                 setCategories(data)
