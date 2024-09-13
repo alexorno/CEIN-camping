@@ -706,4 +706,73 @@ opacity: 0.6;
   /* text-align: center; */
 }
 
+.hero-banner-events{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  width: 100%;
+}
 
+.hero-banner-events-title, .hero-banner-events-description{
+  z-index: 1;
+  color: white;
+  margin: 0 1%;
+}
+
+.hero-banner-events-title{
+  font-size: 6vw;
+  font-weight: 600;
+  text-align: justify;
+  margin-bottom: -1.5em !important;
+}
+
+.hero-banner-events-title:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+
+.hero-banner-events img{
+  z-index: 0;
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.event{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top:solid 1px rgba(0, 0, 0, 0.3) ;
+  border-bottom:solid 1px rgba(0, 0, 0, 0.3) ;
+  padding: 3% 2%;
+}
+
+.event img{
+  height: 40vh;
+  width: 60%;
+  object-fit: cover;
+  margin: auto;
+}
+
+.event-title{
+  font-size: 2em;
+  font-weight: 500;
+  margin: 2% auto;
+}
+
+.event-description{
+  width: 80%;
+  font-size: 1em;
+  text-align: center;
+  margin: 0 auto 1% auto;
+}
+
+.event-details{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}

@@ -39,9 +39,15 @@ export const Navbar = () => {
                     {/* <Link href='/products'>shop</Link> */}
                     <button onClick={() => setShowCategory(!showCategory)} ref={categoryBtn}>Shop</button>
                     {showCategory ? <CategoriesList ref={category} closeCategory={() => setShowCategory(false)} /> : <></>}
-                    <button>events</button>
-                    <button>collections</button>
-                    <button>journal</button>
+                    <Link href={`/events`}>
+                        <button>events</button>
+                    </Link>
+                    <Link href={`/collections`}>
+                        <button>collections</button>
+                    </Link>
+                    <Link href={`/journal`}>
+                        <button>journal</button>
+                    </Link>
                 </div>
                 <div>
                     <button>search</button>
