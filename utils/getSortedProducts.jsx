@@ -17,6 +17,12 @@ export default async function getSortedProducts(sortType){
         case 'descPrice':
             products = await sql`select * from products ORDER BY price DESC`;
             break;
+        case 'descPopularity':
+            products = await sql`select * from products ORDER BY sale_number DESC`;
+            break;
+        case 'ascPopularity':
+            products = await sql`select * from products ORDER BY price ASC`;
+            break;
         default:
             products = await sql `SELECT * FROM products`;
     }

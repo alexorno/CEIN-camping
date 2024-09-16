@@ -1,12 +1,15 @@
 'use client';
 import React, { useEffect, useState, useRef, forwardRef } from "react";
 import Link from "next/link";
+import {useStateContext} from "../context/StateContext";
+import Cart from "./Cart";
 
 
 export const Navbar = () => {
     const [showCategory, setShowCategory] = useState(false);
     const category = useRef(null);
     const categoryBtn = useRef(null);
+    const {showCart, setShowCart, totalQuantities} = useStateContext();
     // ref to have current state, not initial
     const showCategoryRef = useRef(showCategory)
     useEffect(() => {
@@ -24,8 +27,6 @@ export const Navbar = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [category]);
-
-
 
     return (
         <nav className="navbar-container" >
@@ -54,6 +55,13 @@ export const Navbar = () => {
                     <Link href={'/dashboard'}>
                         <button>login</button>
                     </Link>
+                    <button className="cart-button" onClick={() => setShowCart(!showCart)}>
+                        {totalQuantities === 0 ? 
+                        <img src="/shopping-cart-outline-svgrepo-com.svg" height={20} width={20}/> 
+                        : 
+                        totalQuantities}
+                    </button>
+                    {showCart ? <Cart /> : ''}
                 </div>
             </div>
         </nav>

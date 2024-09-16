@@ -1,6 +1,9 @@
 import React from "react";
+import { Product } from "./Product";
+import { sql } from "@vercel/postgres";
 
-export const HeroSecondSection = () => {
+export const HeroSecondSection = async() => {
+    const popularItem = await sql`select * from products ORDER BY sale_number DESC LIMIT 1`;
 
     return(
         <div className="hero-second-section">
@@ -36,11 +39,7 @@ export const HeroSecondSection = () => {
 
                 <div className="feature">
                     <p>Feature</p>
-                    <div className="feature-product">
-                        <img src="/feature-product.png" />
-                        <p className="title">Lightweight Waterproof Camping Tent</p>
-                        <p className="price">$ 259</p>
-                    </div>    
+                    <Product product={popularItem.rows[0]} />
                 </div>
              </div>
         </div>  

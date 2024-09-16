@@ -58,6 +58,12 @@ const filterOpen = ( sort, setSort, filter, setFilter, sortOptionsDiv) => {
 
                     <input type="radio" name="sort" id="sort-option4" value={'descPrice'} onClick={(e)=>handleRadioOption(e)}/>
                     <label htmlFor='sort-option4'>From highest price</label>
+
+                    <input type="radio" name="sort" id="sort-option5" value={'ascPopularity'} onClick={(e)=>handleRadioOption(e)}/>
+                    <label htmlFor='sort-option5'>From least popular</label>
+
+                    <input type="radio" name="sort" id="sort-option5" value={'descPopularity'} onClick={(e)=>handleRadioOption(e)}/>
+                    <label htmlFor='sort-option5'>From most popular</label>
                 </div>
             </div>
 

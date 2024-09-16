@@ -145,10 +145,6 @@ export const Dashboard = ({setAuthFalse}) => {
       </form>
   
   
-      <button className='main-btn'
-      style={{color: 'black', margin: 'auto', display: 'flex', border: '1px solid black', padding: '1% 2%'}}
-      onClick={() => setLogOut(true)}
-      >Log Out</button>
 
 
     <form className='admin-login' onSubmit={() => eventSend(event)}>
@@ -180,6 +176,12 @@ export const Dashboard = ({setAuthFalse}) => {
       <input type='submit' value="Submit"/>}
       <p>{JSON.stringify(responseFileSend)}</p>
     </form>
+
+    <button className='main-btn'
+      style={{color: 'black', margin: 'auto', display: 'flex', border: '1px solid black', padding: '1% 2%'}}
+      onClick={() => setLogOut(true)}
+      >Log Out
+    </button>
     </>
     )
   }

@@ -3,6 +3,7 @@ import { sql } from "@vercel/postgres";
 import getSortedProducts from "../../../../utils/getProducts";
 import getProductById from "../../../../utils/getProductInfoById";
 import Gallery from '../../../../utils/Gallery.jsx'
+import { ButtonClick } from "../../../../components/ButtonClickOnProductPage";
 
 
 export async function generateStaticParams() {
@@ -16,7 +17,6 @@ export async function generateStaticParams() {
 
   export default async function Page({ params }) {
     const product = await getProductById(params.productId);
-    // console.log(product)
 
     // preparing array for gallery
     const images = []
@@ -43,8 +43,8 @@ export async function generateStaticParams() {
                 <img src={images[0].original} />]
       }
     }
-    
 
+    
     
     return (
       <>
@@ -68,13 +68,13 @@ export async function generateStaticParams() {
               <p>Color:</p>
               {product.color || 'Standart'}
             </div>
-            <button className="main-btn-black-bg" style={{width: '100%'}}>Add to Cart</button>
+            <ButtonClick product={product}/>
             <div className="payments">
               payment icons
             </div>
           </div>
         </div>
-{/* add real data from database */}
+
         <div className="product-presentation">
           {lastThreeImages()}
           <div className="product-presentation-text">

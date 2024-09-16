@@ -5,28 +5,18 @@ import Link from "next/link";
 import getSortedProducts from '../utils/getSortedProducts';
 
 export const ProductList = () => {
-    const [products, setProducts] = useState([])
+    const [popularProducts, setPopularProducts] = useState([])
     const [newProducts, setNewProducts] = useState([])
-
-    useEffect(() => {
-        fetch('/api/getProducts')
-        .then((res) => res.json())
-        .then((data) => {
-            setProducts(data)
-            }
-        )
-    }, [])
 
 // getting new Products
     useEffect(() => {
         async function fetchData() {
             setNewProducts(await getSortedProducts('descDate'))
+            setPopularProducts(await getSortedProducts('descPopularity'))
         }
         fetchData()
       }, []); 
     
-
-
     return (
         <>
             <div className='products'>
@@ -55,7 +45,7 @@ export const ProductList = () => {
                 </button>
                 </Link>
             </div>
-            {products.slice(0,7).map((product) => {
+            {popularProducts.slice(0,7).map((product) => {
                 return <Product product={product} key={product.productid}/>
             })
             }
