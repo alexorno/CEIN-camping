@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const Context = createContext();
-
+// FIX JUMPING DURING CHANGE OF QTY WITH MULTIPLE PRODUCTS
 export const StateContext = ({children}) => {
     const [showCart, setShowCart] = useState(false)
     const [cartItems, setCartItems] = useState([])
@@ -12,17 +12,10 @@ export const StateContext = ({children}) => {
     
     const onAdd = (product) => {
 
-        const checkProductInCart = cartItems.find((item) => item.productid === product.productid);
-
-        if(checkProductInCart) {
-        const updatedCartItems = cartItems.map((cartProduct) => {
-            if(cartProduct.productid === product.productid) return {
-            ...cartProduct,
-            quantity: cartProduct.quantity + 1
-            }
-        })
+        const indexOfFoundProduct = cartItems.findIndex((item) => item.productid === product.productid)
         
-        setCartItems(updatedCartItems);
+        if(indexOfFoundProduct >= 0) {
+            return incQty(product)
         } else {
         product.quantity = 1;
         setCartItems([...cartItems, { ...product }]);
@@ -31,14 +24,14 @@ export const StateContext = ({children}) => {
         setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price );
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
     } 
-// with such manipulation we updating array through setState(rerender triggering)
+// with such manipulation we updating array through setState(rerender triggering) and this exact logic prevents from changing product position in array
     const incQty = (product) => {
-        const foundProduct = cartItems.find((item) => item.productid === product.productid)
-        // items without 'product'
-        const newCartItems = cartItems.filter((item) => item.productid !== product.productid)    
+        const indexOfFoundProduct = cartItems.findIndex((item) => item.productid === product.productid)
+        const dublicatedArray = cartItems.map(a => {return {...a}});
+        dublicatedArray[indexOfFoundProduct].quantity = dublicatedArray[indexOfFoundProduct].quantity + 1;
         
-        setCartItems( [ ...newCartItems, {...foundProduct, quantity: foundProduct.quantity + 1} ])
-        setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+        setCartItems(dublicatedArray)
+        setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price)
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1)
     }
 
@@ -47,11 +40,12 @@ export const StateContext = ({children}) => {
             return onRemove(product)
             
         }
-        const newCartItems = cartItems.filter((item) => item.productid !== product.productid)    
-        const foundProduct = cartItems.find((item) => item.productid === product.productid)
+        const indexOfFoundProduct = cartItems.findIndex((item) => item.productid === product.productid)
+        const dublicatedArray = cartItems.map(a => {return {...a}});
+        dublicatedArray[indexOfFoundProduct].quantity = dublicatedArray[indexOfFoundProduct].quantity - 1;
 
-        setCartItems( [ ...newCartItems, {...foundProduct, quantity: foundProduct.quantity - 1} ])
-        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+        setCartItems(dublicatedArray)
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - product.price)
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
     }
 

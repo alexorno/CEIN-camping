@@ -209,8 +209,8 @@ overflow-y: scroll;
 
 .nav-categories .nav-category{
   border: 2px solid rgb(226, 226, 226);
-  padding: 3%;
-  width: 16.66%;
+  /* padding: 3%; */
+  width: 14.28%;
   text-align: center;
 }
 
@@ -221,6 +221,7 @@ overflow-y: scroll;
 }
 
 .nav-categories .nav-category a{
+  padding: 3%;
   color:black;
   text-decoration: none;
 }

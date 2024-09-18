@@ -3,12 +3,14 @@ import React, { useEffect, useState, useRef, forwardRef } from "react";
 import Link from "next/link";
 import {useStateContext} from "../context/StateContext";
 import Cart from "./Cart";
+import { usePathname } from "next/navigation";
 
 
 export const Navbar = () => {
     const [showCategory, setShowCategory] = useState(false);
     const category = useRef(null);
     const categoryBtn = useRef(null);
+    const pathname = usePathname();
     const {showCart, setShowCart, totalQuantities} = useStateContext();
     // ref to have current state, not initial
     const showCategoryRef = useRef(showCategory)
@@ -27,6 +29,11 @@ export const Navbar = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [category]);
+
+
+    useEffect(() => {
+        setShowCategory(false); // close menu if path changes!
+    }, [ pathname ]);
 
     return (
         <nav className="navbar-container" >
