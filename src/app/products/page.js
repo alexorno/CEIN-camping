@@ -1,7 +1,7 @@
 'use client'
 import React, {useState, useEffect} from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Product } from '../../../components/Product';
-import { sql } from '@vercel/postgres';
 import getSortedProducts from '../../../utils/getSortedProducts';
 import {FilterForProducts} from '../../../components/FilterForProducts.jsx';
 
@@ -13,18 +13,25 @@ const index = () => {
     const [products, setProducts] = useState([])
     const [filter, setFilter] = useState('');
     const [loading, setLoading] = useState(true)
+    const query = useSearchParams().get('sort')
 
+    useEffect(() => {
+        if(query){
+            setFilter(query)
+        }
+    }, [])
+    
     // getting products with filter or not
     useEffect(() => {
         async function fetchData() {
             if(filter.length === 0){
                 const data = await getProducts()
-                    .then((res) => setProducts(res));
-                    setLoading(false)
+                .then((res) => setProducts(res));
+                setLoading(false)
             }else{
                 const data = await getSortedProducts(filter)
-                    .then((res) => setProducts(res));
-                    setLoading(false)
+                .then((res) => setProducts(res));
+                setLoading(false)
             }
         }
         fetchData();

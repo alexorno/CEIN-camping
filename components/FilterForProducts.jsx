@@ -47,10 +47,10 @@ const filterOpen = ( sort, setSort, filter, setFilter, sortOptionsDiv) => {
                     <h3>
                         Sorting
                     </h3>
-                    <input type="radio" name="sort" id="sort-option1" value={'ascDate'} onClick={(e)=>handleRadioOption(e)}/>
+                    <input type="radio" name="sort" id="sort-option1" value={'descDate'} onClick={(e)=>handleRadioOption(e)}/>
                     <label htmlFor='sort-option1'>From latest to oldest</label>
 
-                    <input type="radio" name="sort" id="sort-option2" value={'descDate'} onClick={(e)=>handleRadioOption(e)}/>
+                    <input type="radio" name="sort" id="sort-option2" value={'ascDate'} onClick={(e)=>handleRadioOption(e)}/>
                     <label htmlFor='sort-option2'>From oldest to latest</label>
 
                     <input type="radio" name="sort" id="sort-option3" value={'ascPrice'} onClick={(e)=>handleRadioOption(e)}/>
@@ -62,8 +62,8 @@ const filterOpen = ( sort, setSort, filter, setFilter, sortOptionsDiv) => {
                     <input type="radio" name="sort" id="sort-option5" value={'ascPopularity'} onClick={(e)=>handleRadioOption(e)}/>
                     <label htmlFor='sort-option5'>From least popular</label>
 
-                    <input type="radio" name="sort" id="sort-option5" value={'descPopularity'} onClick={(e)=>handleRadioOption(e)}/>
-                    <label htmlFor='sort-option5'>From most popular</label>
+                    <input type="radio" name="sort" id="sort-option6" value={'descPopularity'} onClick={(e)=>handleRadioOption(e)}/>
+                    <label htmlFor='sort-option6'>From most popular</label>
                 </div>
             </div>
 

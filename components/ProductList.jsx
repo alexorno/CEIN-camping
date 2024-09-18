@@ -23,12 +23,11 @@ export const ProductList = () => {
                 <div className='main-product'>
                     <h6 style={{fontSize: '1.5rem', marginTop: '10px'}}>New In</h6>
                     <p>Latest products from CEIN</p>
-                    <button className='main-black-btn'>
-                        <Link href='/products'>
-                        Shop All
-
-                        </Link>
-                    </button>
+                    <Link href={{pathname: '/products', query: {sort: 'descDate'}}}>
+                        <button className='main-black-btn'>
+                            Shop All
+                        </button>
+                    </Link>
                 </div>
                 {newProducts.slice(0,7).map((product) => {
                     return <Product product={product} key={product.productid}/>
@@ -39,7 +38,7 @@ export const ProductList = () => {
             <div className='main-product'>
                 <h6 style={{fontSize: '1.5rem', marginTop: '10px'}}>Best Seller</h6>
                 <p>Gear up for your great outdoor</p>
-                <Link href={`/products`}>
+                <Link href={{pathname: `/products`, query: {sort: 'descPopularity'}}}>
                 <button className='main-black-btn'>
                     Shop All
                 </button>
