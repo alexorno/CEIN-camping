@@ -3,8 +3,7 @@ import Link from 'next/link';
 import React from 'react'
 
 export const Product = ({product}) => {
-    const {productid, name, description, price, images} = product;
-
+    const {productid, name, description, price, images, category_name} = product;
 
   return (
     <div className='main-product'>
@@ -12,7 +11,7 @@ export const Product = ({product}) => {
             {/* <img src={product.images[0].url} /> */}
             { images ? <img src={images[0].url} /> : 'no image'}
             <div className='category-price'>
-                <h6>category</h6>
+                <h6>{category_name}</h6>
                 <p> {price}$</p>
             </div>
             <h6>{name}</h6>

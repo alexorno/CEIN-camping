@@ -12,6 +12,7 @@ const getProducts = async () => {
 const index = () => {
     const [products, setProducts] = useState([])
     const [filter, setFilter] = useState('');
+    const [loading, setLoading] = useState(true)
 
     // getting products with filter or not
     useEffect(() => {
@@ -19,9 +20,11 @@ const index = () => {
             if(filter.length === 0){
                 const data = await getProducts()
                     .then((res) => setProducts(res));
+                    setLoading(false)
             }else{
                 const data = await getSortedProducts(filter)
                     .then((res) => setProducts(res));
+                    setLoading(false)
             }
         }
         fetchData();
@@ -38,6 +41,7 @@ const index = () => {
             </div>
         </div>
         <FilterForProducts filter={filter} setFilter={setFilter}/>
+        {loading ? <img src='/loading.gif' width={100} style={{margin:'auto'}} /> : ''}
         <div className='products'>
             {products.map((product) => {
                 return <Product product={product} key={product.productid}/>

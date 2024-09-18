@@ -3,6 +3,7 @@ import { Product } from "../../../../components/Product";
 import getCategories from "../../../../utils/getCategories";
 import getProductsWithinCategory from "../../../../utils/getProductsWithinCategory";
 
+
 export const dynamic = 'force-dynamic';
 // Return a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
@@ -17,10 +18,15 @@ export async function generateStaticParams() {
   // Multiple versions of this page will be statically generated
   // using the `params` returned by `generateStaticParams`
   export default async function Page({ params }) {
+    let loading = true;
     const products = await getProductsWithinCategory(params.id);
     const categoryNameQuery = await sql `SELECT name FROM categories WHERE id=${params.id}`
     const categoryName = categoryNameQuery.rows[0].name;
+    if(products){
+        loading = false;
+    }
     if(products === 'no data'){
+        loading = false;
         return "Sorry, but there's no products within this category"
     }
 
@@ -34,6 +40,7 @@ export async function generateStaticParams() {
             </div>
         </div>
         <div className="products">
+            {loading ? <img src='/loading.gif' width={100} style={{margin:'auto'}} /> : ''}
             {products.map((product) => {
             return (<Product product={product} key={product.productid}/>)
         })}
