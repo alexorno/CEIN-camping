@@ -500,6 +500,10 @@ margin-bottom: 5%;
 }
 
 .hero-second-section .content .post .text p{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
   width: 47%;
   font-size: 13px;
 }

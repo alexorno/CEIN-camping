@@ -1,10 +1,12 @@
 import React from "react";
 import { Product } from "./Product";
 import { sql } from "@vercel/postgres";
+import getEvents from "../utils/getEvents";
 
 export const HeroSecondSection = async() => {
     const popularItem = await sql`select * from products ORDER BY sale_number DESC LIMIT 1`;
-
+    const events = await getEvents();
+    const {title, description, images } = events[0]
     return(
         <div className="hero-second-section">
              <div className="cta-image">
@@ -30,10 +32,10 @@ export const HeroSecondSection = async() => {
 
                 <div className="post">
                     <p>Event</p>
-                    <img src="/second-journal.png"/>
+                    <img src={images[0].url}/>
                     <div className="text">
-                        <h6>Organic Aquaculture Big Catch Festival</h6>
-                        <p>Saiyuen has had a great harvest this year! In our aquaponic pool, we have a variety of edible fish, including Crucian Carp, Tilapia, and Jade Perch. Especially Jade Perch is the treasure among the freshwater fish. During the Big Catch Festival at Saiyuen, campers can enjoy fishing or even try cooking their own catch in the wild. Come and experience the thrill of catching and cooking your own fish in the great outdoors at Saiyuen!</p>
+                        <h6>{title}</h6>
+                        <p>{description}</p>
                     </div>
                 </div>
 

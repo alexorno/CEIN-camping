@@ -2,6 +2,7 @@ import '../../styles/globals.css';
 import { Navbar } from '../../components';
 import { Footer } from '../../components/Footer';
 import { StateContext } from '../../context/StateContext';
+import { Suspense } from 'react';
 
 
 export const metadata = {
@@ -13,11 +14,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <StateContext >
-          <Navbar />
-            {children}    
-          <Footer />
-        </StateContext>
+        <Suspense fallback={'Loading'}>
+          <StateContext >
+            <Navbar />
+              {children}    
+            <Footer />
+          </StateContext>
+        </Suspense>
       </body>
     </html>
   );
