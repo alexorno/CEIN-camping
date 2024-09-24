@@ -1,14 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
 import AvatarUploadPage from './AvatarUploadPage';
 import { upload } from '@vercel/blob/client';
-// import { upload } from '@vercel/blob/client';
+import getColors from '../utils/getColors';
 
 export const Dashboard = ({setAuthFalse}) => {
     const [logOut, setLogOut] = useState(false);
     const [formValues, setFormValues] = useState();
     const [sendLoading, setSendLoading] = useState(false);
     const [responseFileSend, setResponseFileSend] = useState();
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([]);
+    const [colors, setColors] = useState([])
+    
+    useEffect(async () => {
+      setColors(await getColors())
+    },[])
 
     useEffect(() => {
       fetch('/api/getCategories')
@@ -104,21 +109,25 @@ export const Dashboard = ({setAuthFalse}) => {
       <form className='admin-login' onSubmit={() => fileSend(event)}>
         <h3>Add product</h3>
         <label htmlFor='file' >Images:</label>
-        <input name="file" ref={inputFileRef} type="file" multiple required />
+          <input name="file" ref={inputFileRef} type="file" multiple required />
         <label htmlFor="name">Name:</label>
-        <input type='text' name='name'/>
+          <input type='text' name='name'/>
         <label htmlFor="description">Description:</label>
-        <textarea type='text' name='description'/>
+          <textarea type='text' name='description'/>
         <label htmlFor="color">Color:</label>
-        <input type='text' name='color'/>
+          <select name="color" >
+            {colors.map((color) => (
+              <option value={color.id} key={color.id}>{color.name}</option>
+            ))}
+          </select>
         <label htmlFor="material">Material:</label>
-        <input type='text' name='material'/>
+          <input type='text' name='material'/>
         <label htmlFor="occupcapacity">Occupancy Capacity:</label>
-        <input type='number' name='occupcapacity'/>
+          <input type='number' name='occupcapacity'/>
         <label htmlFor="dimensions">Dimensions:</label>
-        <input type='text' name='dimensions'/>
+          <input type='text' name='dimensions'/>
         <label htmlFor="Price">Price:</label>
-        <input type='text' name='price'/>
+          <input type='text' name='price'/>
 
           <label htmlFor="categories">Choose a category:</label>
           <select name="categoryId" >

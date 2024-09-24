@@ -1,18 +1,29 @@
 import React, {useEffect, useState} from 'react'
 import { useStateContext } from '../context/StateContext';
 import { loadStripe } from "@stripe/stripe-js";
+import updateSaleRecordSql from '../utils/updateSaleRecordSql';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const Cart = () => {
     const {setShowCart, cartItems, totalPrice, totalQuantities} = useStateContext();
+    const [success, setSuccess] = useState(0);
 
+    useEffect(() => {
+        async function fetchData() {
+          // You can await here
+          await updateSaleRecordSql(cartItems)
+          // ...
+        }
+        fetchData();
+      }, [success]);
 
     useEffect(() => {
         // Check to see if this is a redirect back from Checkout
         const query = new URLSearchParams(window.location.search);
         if (query.get('success')) {
           console.log('Order placed! You will receive an email confirmation.');
+          setSuccess(success + 1);
         }
     
         if (query.get('canceled')) {
