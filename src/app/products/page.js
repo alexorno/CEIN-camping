@@ -48,13 +48,16 @@ const index = () => {
             </div>
         </div>
         <FilterForProducts filter={filter} setFilter={setFilter}/>
-        {loading ? <img src='/loading.gif' width={100} style={{margin:'auto'}} /> : ''}
-        <div className='products'>
-            {products.map((product) => {
-                return <Product product={product} key={product.productid}/>
-            })
-            }
-        </div>
+        {loading ? 
+            <img src='/loading.gif' width={100} style={{margin:'auto'}} /> 
+            : 
+            <div className='products'>
+                {products.map((product) => {
+                    return <Product product={product} key={product.productid}/>
+                })
+                }
+            </div>
+        }
     </>
     )
 }

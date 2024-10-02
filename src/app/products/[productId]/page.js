@@ -20,8 +20,7 @@ export async function generateStaticParams() {
 
     // preparing array for gallery
     const images = []
-
-    if(product.images){
+    if(product.images.length > 0){
         product.images.map((image) => {
           images.push({original: image.url})
       })

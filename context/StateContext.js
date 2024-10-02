@@ -21,7 +21,7 @@ export const StateContext = ({children}) => {
         setCartItems([...cartItems, { ...product }]);
         }
 
-        setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price );
+        setTotalPrice((prevTotalPrice) => parseFloat(+prevTotalPrice + +product.price).toFixed(2));
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
     } 
 // with such manipulation we updating array through setState(rerender triggering) and this exact logic prevents from changing product position in array
@@ -29,9 +29,9 @@ export const StateContext = ({children}) => {
         const indexOfFoundProduct = cartItems.findIndex((item) => item.productid === product.productid)
         const dublicatedArray = cartItems.map(a => {return {...a}});
         dublicatedArray[indexOfFoundProduct].quantity = dublicatedArray[indexOfFoundProduct].quantity + 1;
-        
+        // FIXXX numbers add
         setCartItems(dublicatedArray)
-        setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price)
+        setTotalPrice((prevTotalPrice) => parseFloat(+prevTotalPrice + +product.price).toFixed(2) ) 
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1)
     }
 
@@ -45,7 +45,7 @@ export const StateContext = ({children}) => {
         dublicatedArray[indexOfFoundProduct].quantity = dublicatedArray[indexOfFoundProduct].quantity - 1;
 
         setCartItems(dublicatedArray)
-        setTotalPrice((prevTotalPrice) => prevTotalPrice - product.price)
+        setTotalPrice((prevTotalPrice) => parseFloat(+prevTotalPrice - +product.price).toFixed(2))
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
     }
 
@@ -53,7 +53,7 @@ export const StateContext = ({children}) => {
         const newCartItems = cartItems.filter((item) => item.productid !== product.productid);
 
         setCartItems(newCartItems)
-        setTotalPrice((prevTotalPrice) => prevTotalPrice - product.price)
+        setTotalPrice((prevTotalPrice) => parseFloat(+prevTotalPrice - +product.price).toFixed(2))
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
         if(newCartItems.length === 0){
             localStorage.removeItem('items')

@@ -8,7 +8,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 const Cart = () => {
     const {setShowCart, cartItems, totalPrice, totalQuantities} = useStateContext();
     const [success, setSuccess] = useState(0);
-
+// fix salenumber update
     useEffect(() => {
         async function fetchData() {
           // You can await here
@@ -84,13 +84,13 @@ const Cart = () => {
 
 const CartItem = ({product}) => {
 
-    const {name, color, quantity, price} = product;
+    const {name, color, quantity, price, images} = product;
     const {incQty, decQty} = useStateContext();
 
 
     return (
         <div className='cart-item'>
-            <img src={product.images[0].url} />
+            <img src={images.length>0 ? images[0].url : '/no-image-available.png'} />
             <div className='name'>
                 <p>{name}</p>
                 <p>{color ? color : 'As shown'}</p>
@@ -101,7 +101,7 @@ const CartItem = ({product}) => {
                 </div>
             </div>
             <div className='price'>
-                <p>${price*quantity}</p>
+                <p>${parseFloat(+price * +quantity).toFixed(2)}</p>
             </div>
         </div>
     )
