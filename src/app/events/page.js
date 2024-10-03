@@ -1,6 +1,6 @@
 import React from 'react'
-import HeroBannerEvents from '../../../components/HeroBannerEvents';
-import Event from '../../../components/EventComponent';
+import HeroBannerEvents from '../../../components/heroBannerEvents/HeroBannerEvents';
+import Event from '../../../components/event/Event';
 import getEvents from '../../../utils/getEvents';
 
 

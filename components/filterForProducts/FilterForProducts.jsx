@@ -1,6 +1,7 @@
 'use client'
 import { useState, useRef } from "react"
-import React from "react"
+import React from "react";
+import styles from "./filterForProducts.module.css";
 
 export const FilterForProducts = ({filter, setFilter}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -26,9 +27,6 @@ const filterOpen = ( sort, setSort, filter, setFilter, sortOptionsDiv) => {
         }
     }
 
-    const submitFilters = () => {
-        setFilter(sort)
-    }
     
     const clearFilters = () => {
         for (var item of sortOptionsDiv.current.children) {
@@ -40,10 +38,10 @@ const filterOpen = ( sort, setSort, filter, setFilter, sortOptionsDiv) => {
     }
 
     return(
-        <div className="filter-container">
+        <div className={styles.container}>
 
-            <div className="filter-options">
-                <div className="sort" ref={sortOptionsDiv}>
+            <div className={styles.options}>
+                <div className={styles.sort} ref={sortOptionsDiv}>
                     <h3>
                         Sorting
                     </h3>
@@ -67,9 +65,9 @@ const filterOpen = ( sort, setSort, filter, setFilter, sortOptionsDiv) => {
                 </div>
             </div>
 
-            <div className="filter-buttons">
+            <div className={styles.buttons}>
                 <button className="main-black-btn" onClick={() => clearFilters()}>Clear All</button>
-                <button className="main-btn-black-bg" onClick={() => submitFilters()}>Submit</button>
+                <button className="main-btn-black-bg" onClick={() => setFilter(sort)}>Submit</button>
             </div>
         </div>
     )

@@ -1,9 +1,10 @@
 'use client';
 import React, { useEffect, useState, useRef, forwardRef } from "react";
 import Link from "next/link";
-import {useStateContext} from "../context/StateContext";
-import Cart from "./Cart";
+import {useStateContext} from "../../context/StateContext";
+import Cart from "../cart/Cart";
 import { usePathname } from "next/navigation";
+import styles from "./navbar.module.css";
 
 
 export const Navbar = () => {
@@ -36,7 +37,7 @@ export const Navbar = () => {
     }, [ pathname ]);
 
     return (
-        <nav className="navbar-container" >
+        <nav className={styles.container} >
             <div className="main-container">
                 <div className="logo">
                     <Link href='/'>
@@ -62,7 +63,7 @@ export const Navbar = () => {
                     <Link href={'/dashboard'}>
                         <button>login</button>
                     </Link>
-                    <button className="cart-button" onClick={() => setShowCart(!showCart)}>
+                    <button className={styles.cart} onClick={() => setShowCart(!showCart)}>
                         {totalQuantities === 0 ? 
                         <img src="/shopping-cart-outline-svgrepo-com.svg" height={20} width={20}/> 
                         : 
@@ -90,10 +91,10 @@ const CategoriesList = forwardRef(function MyInput(props, ref) {
     }, [])
 
     return (
-        <div className="nav-categories" ref={ref}>
+        <div className={styles.categories} ref={ref}>
             {categories.map((category) => {
                 return (
-                    <div className="nav-category" key={category.id}>
+                    <div className={styles.category} key={category.id}>
                         <Link href={'/categories/' + category.id}>
                             <img src={category.image} />
                             <p>{category.name}</p>
@@ -101,7 +102,7 @@ const CategoriesList = forwardRef(function MyInput(props, ref) {
                     </div>
                 )
             })}
-            <div className="nav-category">
+            <div className={styles.category}>
                 <Link href={'/products'}>
                     <img src={'/outdoor-trip-navigation-svgrepo-com.svg'} />
                     <p>All products</p>

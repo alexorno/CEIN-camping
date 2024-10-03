@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Product } from '../../../components/Product';
 import getSortedProducts from '../../../utils/getSortedProducts';
-import {FilterForProducts} from '../../../components/FilterForProducts.jsx';
+import {FilterForProducts} from '../../../components/filterForProducts/FilterForProducts.jsx';
 
 const getProducts = async () => {
    return (await getSortedProducts('ascDate'))

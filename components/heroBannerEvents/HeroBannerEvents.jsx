@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import styles from "./HeroBannerEvents.module.css";
 
 const HeroBannerEvents = () => {
   return (
-    <div className='hero-banner-events'>
-        <p className='hero-banner-events-title'>
+    <div className={styles.events}>
+        <p className={styles.title}>
             Gear up for Great Outdoors®
         </p>
-        <p className='hero-banner-events-description'>
+        <p className={styles.description}>
             Premium Camping Gear
         </p>
         <img src='https://kvahiabqmr5ceih5.public.blob.vercel-storage.com/29318807325_a43308ffcc_k-X5HlbvmmfKVx2gNWqzoh4ew9OO1Zsa.jpg' />

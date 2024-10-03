@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { useStateContext } from '../context/StateContext';
+import { useStateContext } from '../../context/StateContext';
 import { loadStripe } from "@stripe/stripe-js";
-import updateSaleRecordSql from '../utils/updateSaleRecordSql';
+import updateSaleRecordSql from '../../utils/updateSaleRecordSql';
+import styles from "./cart.module.css";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
@@ -56,8 +57,8 @@ const Cart = () => {
       
 
   return (
-    <div className='cart-container'>
-        <div className='cart-name'>
+    <div className={styles.container}>
+        <div className={styles.name}>
             <p>
                 Cart
             </p>
@@ -65,13 +66,13 @@ const Cart = () => {
                 <img src='/close-svgrepo-com.svg' height={25} width={25}/>
             </button>
         </div>
-        <div className='cart-products'>
+        <div className={styles.products}>
             {cartItems.map((product) => {
             return <CartItem product={product} key={product.productid}/>
 })}
         </div>
-        <div className='checkout'>
-            <div className='subtotal'>
+        <div className={styles.checkout}>
+            <div className={styles.subtotal}>
                 <p>Subtotal</p>
                 <p>${totalPrice}</p>
             </div>
@@ -89,18 +90,18 @@ const CartItem = ({product}) => {
 
 
     return (
-        <div className='cart-item'>
+        <div className={styles.item}>
             <img src={images.length>0 ? images[0].url : '/no-image-available.png'} />
-            <div className='name'>
+            <div className={styles.itemName}>
                 <p>{name}</p>
                 <p>{color ? color : 'As shown'}</p>
-                <div className='qty-change'>
+                <div className={styles.qtyChange}>
                     <button onClick={() => decQty(product)}>-</button>
                     <p>{quantity}</p>
                     <button onClick={() => incQty(product)}>+</button>
                 </div>
             </div>
-            <div className='price'>
+            <div className={styles.price}>
                 <p>${parseFloat(+price * +quantity).toFixed(2)}</p>
             </div>
         </div>
