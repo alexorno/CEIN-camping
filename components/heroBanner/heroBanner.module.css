@@ -1,0 +1,73 @@
+
+.top{
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+  }
+  /* CENTER WITH MARGIN  */
+  .top h1{
+    display: inline-flex;
+    position: relative;
+    /* margin: auto; */
+    font-size: 6.35vw;
+    font-weight: 700;
+    text-align: center;
+  }
+  .top span{
+    font-size: 3vw;
+    vertical-align: text-top;
+  }
+  .top p{
+    position: relative;
+    left: 0;
+    font-size: 1.5em;
+  }
+  /* END */ 
+  .bottom{
+    display:  flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1%;
+  }
+  
+  .bottom .text{
+    width: 29%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .bottom .image{
+    width: 69%;
+    display: flex;
+    justify-content: center;
+  }
+  .bottom .text .originDate{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .bottom h3{
+    margin-top: 3%;
+    font-size: 2em;
+    font-weight: 500;
+  }
+  
+  .bottom p{
+    font-size: 13px;
+  }
+  
+  .bottom .description{
+    margin-bottom: 5%;
+  }
+  
+  .bottom button{
+    cursor:pointer;
+    width: 10%;
+    display: flex;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+  }

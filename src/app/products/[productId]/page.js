@@ -4,7 +4,7 @@ import getSortedProducts from "../../../../utils/getProducts";
 import getProductById from "../../../../utils/getProductInfoById";
 import Gallery from '../../../../utils/Gallery.jsx'
 import { ButtonClick } from "../../../../components/ButtonClickOnProductPage";
-
+import styles from "./productId.module.css";
 
 export async function generateStaticParams() {
   const products = await getSortedProducts();
@@ -47,15 +47,15 @@ export async function generateStaticParams() {
     
     return (
       <>
-        <div className="product-page">
-          <div className="photos">
+        <div className={styles.page}>
+          <div className={styles.photos}>
             <Gallery images={images}/>
           </div>
-          <div className="product-info">
+          <div className={styles.info}>
             <h1>
               {product.name}
             </h1>
-            <div className="price">
+            <div className={styles.price}>
               <p>
               ${product.price}
               </p>
@@ -63,20 +63,20 @@ export async function generateStaticParams() {
                 <img src="/heart-svgrepo-com.svg" style={{display: 'inline', height: '1em'}}/> Wishlist
               </p>
             </div>
-            <div className="color">
+            <div className={styles.color}>
               <p>Color:</p>
               {product.color || 'Standart'}
             </div>
             <ButtonClick product={product}/>
-            <div className="payments">
+            <div className={styles.payments}>
               payment icons
             </div>
           </div>
         </div>
 
-        <div className="product-presentation">
+        <div className={styles.presentation}>
           {lastThreeImages()}
-          <div className="product-presentation-text">
+          <div className={styles.presentationText}>
             <h6>Convenience</h6>
             <p>
               {product.description}
@@ -84,11 +84,11 @@ export async function generateStaticParams() {
           </div>
         </div>
 
-        <div className="product-details">
-          <div className="photo">
+        <div className={styles.productDetails}>
+          <div className={styles.photo}>
             <img src={images[1] && images[1].original || images[0] && images[0].original} />
           </div>
-          <div className="details">
+          <div className={styles.details}>
             <ul>
               <li>
                 <p>Color</p>
@@ -111,7 +111,7 @@ export async function generateStaticParams() {
                 <p>{product.dimensions || '-'}</p>
               </li>
             </ul>
-            <p className="disclaimer">
+            <p className={styles.disclaimer}>
               The published photos have been processed and adjusted  to be as close to the actual color as possible.
               <br />
               The color may look different from actual color ddepending on your monitor settings, weather, lighting condition, etc.

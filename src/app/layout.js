@@ -1,6 +1,6 @@
 import '../../styles/globals.css';
 import { Navbar } from '../../components';
-import { Footer } from '../../components/Footer';
+import { Footer } from '../../components/footer/Footer';
 import { StateContext } from '../../context/StateContext';
 import { Suspense } from 'react';
 

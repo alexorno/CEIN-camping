@@ -1,0 +1,24 @@
+.shop{
+    color: white;
+    background-image: url(/hero-banner-shop.png) ;
+    background-size: cover;
+  }
+  .shop .container{
+    width: 40%;
+    padding: 5% 1%;
+  }
+  
+  .shop .container > *{
+    margin-bottom: 20px;
+  }
+  
+  .shop h2{
+    font-size: 2.5em;
+    font-weight: 500;
+    line-height: 95%;
+    text-transform: uppercase;
+  }
+  
+  .shop p{
+    font-size: 13px;
+  }

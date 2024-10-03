@@ -1,0 +1,87 @@
+
+.secondSection{
+    display:flex;
+  }
+  
+  .secondSection .ctaImage{
+    width: 50%;
+    background-image: url(/bg-second-section.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    display: flex;
+  }
+  
+  .secondSection .container{
+    width: 60%;
+    margin: auto 20%;
+  }
+  
+  .secondSection .ctaImage h4{
+    font-size: 3.5em;
+    line-height: 95%;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+  }
+  
+  .secondSection .ctaImage p{
+    font-size: 13px;
+  margin-bottom: 5%;
+  }
+
+
+.secondSection .content{
+    width: 50%;
+  }
+  
+  .secondSection .content .post{
+    margin: 15px;
+  }
+  
+  .secondSection .content .post > p{
+    font-size: 13px;
+    margin: 15px 0;
+  }
+  .secondSection .content .post img{
+    width: 100%;
+  }
+  
+  .secondSection .content .post .text{
+    display: flex;
+    margin: 5% 0;
+    flex-direction: row;
+    justify-content: space-between;
+  }  
+  
+  .secondSection .content .post .text h6{
+    display: inline;
+    width: 47%;
+    font-size: 2em;
+    line-height: 100%;
+  }
+  
+  .secondSection .content .post .text p{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    width: 47%;
+    font-size: 13px;
+  }
+  
+  .secondSection .content .feature {
+    margin:15px;
+  }
+  .secondSection .content .feature > p{
+    font-size: 13px;
+    margin: 25px 0;
+  }
+  
+  .secondSection .content .feature :global(.main-product) {
+    height: auto;
+    margin-right: 2%;
+    width: 48%;
+    border: none;
+  }
+  

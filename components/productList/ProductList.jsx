@@ -1,8 +1,9 @@
 "use client"
 import React, {useState, useEffect} from 'react';
-import { Product } from './Product';
+import { Product } from '../Product';
 import Link from "next/link";
-import getSortedProducts from '../utils/getSortedProducts';
+import getSortedProducts from '../../utils/getSortedProducts';
+import styles from './productList.module.css'
 
 export const ProductList = () => {
     const [popularProducts, setPopularProducts] = useState([])
@@ -19,7 +20,7 @@ export const ProductList = () => {
     
     return (
         <>
-            <div className='products'>
+            <div className={styles.products}>
                 <div className='main-product'>
                     <h6 style={{fontSize: '1.5rem', marginTop: '10px'}}>New In</h6>
                     <p>Latest products from CEIN</p>
@@ -34,7 +35,7 @@ export const ProductList = () => {
                 })
                 }
             </div>
-            <div className='products'>
+            <div className={styles.products}>
             <div className='main-product'>
                 <h6 style={{fontSize: '1.5rem', marginTop: '10px'}}>Best Seller</h6>
                 <p>Gear up for your great outdoor</p>

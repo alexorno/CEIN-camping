@@ -1,34 +1,34 @@
 import Link from 'next/link'
 import React from 'react'
+import styles from './footer.module.css'
 
 export const Footer = () => {
   return (
-    <div className='footer'>
+    <div className={styles.footer}>
         <div className='main-container'>
-            <div className='footer-address'>
+            <div className={styles.footerAddress}>
                 <img src='/Logo.svg' />
-                <p className='address'>
+                <p className={styles.address}>
                     52619 Spinka Course, Dannyfor, PL 28832-1229
                 </p>
-                <p className='schedule-num'>
+                <p className={styles.scheduleNum}>
                     OPEN 11:00 -19:00<br/>
                     TEL +1(789)123-5678
                 </p>
-                <div className='social-media'>
+                <div className={styles.socialMedia}>
                     <a href='https://www.facebook.com'>
                         <img src='/5305153_fb_facebook_facebook logo_icon.svg' />
                     </a>
-                    <a href='twitter.com'>
+                    <a href='https://www.twitter.com'>
                         <img src='/5305170_bird_social media_social network_tweet_twitter_icon.svg' />
                     </a>
-                    <a href=''>
-            
+                    <a href='https://www.instagram.com'>
                         <img src='/5335781_camera_instagram_social media_instagram logo_icon.svg' />
                     </a>
                 </div>
             </div>
-            <div className='footer-navigation'>
-                <h6 className='category-name'>Online Store</h6>
+            <div className={styles.navigation}>
+                <h6>Online Store</h6>
                 <Link href={'/'}>
                     Products
                 </Link>
@@ -57,7 +57,7 @@ export const Footer = () => {
                     Privacy Policy
                 </Link>
             </div>
-            <div className='footer-support'>
+            <div className={styles.footerSupport}>
                 <h6>Customer Service</h6>
                 <p>
                     The staff at the stores that carry the products will be happy to discuss the products you are interested in online. Use video calls or messages.
