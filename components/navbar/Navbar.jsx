@@ -39,12 +39,12 @@ export const Navbar = () => {
     return (
         <nav className={styles.container} >
             <div className="main-container">
-                <div className="logo">
+                <div className={styles.logo}>
                     <Link href='/'>
                         <img src='/Logo.svg' />
                     </Link>
                 </div>
-                <div className="">
+                <div className={styles.center}>
                     {/* <Link href='/products'>shop</Link> */}
                     <button onClick={() => setShowCategory(!showCategory)} ref={categoryBtn}>Shop</button>
                     {showCategory ? <CategoriesList ref={category} closeCategory={() => setShowCategory(false)} /> : <></>}
@@ -58,9 +58,18 @@ export const Navbar = () => {
                         <button>journal</button>
                     </Link>
                 </div>
-                <div>
-                    <button>search</button>
-                    <Link href={'/dashboard'}>
+                <div className={styles.mobileCategories}>
+                    <button onClick={() => setShowCategory(!showCategory)} ref={categoryBtn}>
+                        <img src="/menu-svgrepo-com.svg" height={35} ></img>
+                    </button>
+                        {showCategory ? <CategoriesList ref={category} closeCategory={() => setShowCategory(false)} /> : <></>}
+                </div>
+                <div className={styles.right}>
+                    <button className={styles.search}>
+                        <p>Search</p>
+                        <img src="/search-svgrepo-com.svg" className={styles.searchIcon} height={35}/>
+                    </button>
+                    <Link href={'/dashboard'} className={styles.dashboard}>
                         <button>login</button>
                     </Link>
                     <button className={styles.cart} onClick={() => setShowCart(!showCart)}>

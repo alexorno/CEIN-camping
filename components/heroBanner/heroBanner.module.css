@@ -1,15 +1,13 @@
 
 .top{
-    width: 100%;
-    margin-top: 2%;
-    margin-bottom: 3%;
+    width: 95vw;
+    margin: 2% auto 3% auto;
   }
   /* CENTER WITH MARGIN  */
   .top h1{
-    display: inline-flex;
-    position: relative;
-    /* margin: auto; */
-    font-size: 6.35vw;
+    display: block;
+    margin: auto;
+    font-size: 6vw;
     font-weight: 700;
     text-align: center;
   }
@@ -18,9 +16,8 @@
     vertical-align: text-top;
   }
   .top p{
-    position: relative;
-    left: 0;
-    font-size: 1.5em;
+    margin-left: 2.5%;
+    font-size: 2.5vw;
   }
   /* END */ 
   .bottom{
@@ -70,4 +67,32 @@
     border: none;
     padding: 0;
     margin-left: auto;
+  }
+
+  @media (max-width: 768px) {
+.top{
+  margin: 5% auto;
+}
+
+    .top h1{
+      font-size: 5.4vw;
+    }
+
+    .top p{
+      margin-left: 6vw;
+      font-size: 2vw;
+    }
+
+    .bottom{
+      flex-direction: column-reverse;
+    }
+
+    .bottom .text{
+      margin: 4% auto;
+      width: 100%;
+    }
+
+    .bottom .image{
+      width: 100%;
+    }
   }

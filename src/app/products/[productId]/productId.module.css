@@ -156,3 +156,36 @@
     width: 50%;
     /* text-align: center; */
 }
+
+@media (max-width:768px) {
+    .page{
+        flex-direction: column;
+    }
+
+    .page .photos, .page .info, .productDetails .photo, .productDetails .details{
+        width: 100%;
+    }
+
+    .page .photos{
+        height: 42vh;
+    }
+
+    .page .info h1{
+        font-size: 2em;
+    }
+
+    .presentation{
+        display: flex;
+    }
+
+    .presentation img{
+        display: none;
+    }
+
+    .productDetails{
+        flex-direction: column;
+    }
+    .productDetails .photo{
+        width: 100%;
+    }
+}

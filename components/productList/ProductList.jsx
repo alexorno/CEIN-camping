@@ -22,8 +22,8 @@ export const ProductList = () => {
         <>
             <div className={styles.products}>
                 <div className='main-product'>
-                    <h6 style={{fontSize: '1.5rem', marginTop: '10px'}}>New In</h6>
-                    <p>Latest products from CEIN</p>
+                    <h6 style={{fontSize: '1.5rem', margin: '5%'}}>New In</h6>
+                    <p style={{ margin: '2% 5%'}}>Latest products from CEIN</p>
                     <Link href={{pathname: '/products', query: {sort: 'descDate'}}}>
                         <button className='main-black-btn'>
                             Shop All

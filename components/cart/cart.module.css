@@ -110,4 +110,18 @@
     padding: 10px;
     text-align: center;
   }
+
+  @media (max-width: 768px) {
+    .container{
+      width:100%;
+    }
+
+    .item .qtyChange{
+      margin: 5% 0;
+    }
+
+    .container :global(.main-btn-black-bg){
+      margin: 5% auto;
+    }
+  }
   

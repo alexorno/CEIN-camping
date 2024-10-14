@@ -85,3 +85,30 @@
     border: none;
   }
   
+  @media (max-width: 768px) {
+    .secondSection {
+      flex-direction: column;
+    }
+
+    .secondSection .ctaImage, .secondSection .content{
+      width: 100%;
+    }
+
+    .secondSection .container{
+      width: 90%;
+      margin: 30% auto;
+    }
+
+    .secondSection .ctaImage h4{
+      font-size: 2em;
+    }
+
+    .secondSection .content .post .text{
+      flex-direction: column;
+    }
+
+    .secondSection .content .post .text h6, .secondSection .content .post .text p{
+      width: 100%;
+      margin-bottom: 2%;
+    }
+  }

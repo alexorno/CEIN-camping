@@ -10,7 +10,7 @@ export const FilterForProducts = ({filter, setFilter}) => {
 
     return(
         <>
-            <img src="/filter-svgrepo-com.svg" height={45} width={45} className="filter-icon" onClick={() => setIsOpen(!isOpen)}/>
+            <img src="/filter-svgrepo-com.svg" height={45} width={45} className={styles.filterIcon} onClick={() => setIsOpen(!isOpen)}/>
             {isOpen && filterOpen(sort, setSort, filter, setFilter, sortOptionsDiv)}
         </>
     )

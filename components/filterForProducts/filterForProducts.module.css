@@ -13,6 +13,13 @@
       max-height: 500px;
     }
   }
+
+  .filterIcon{
+    margin: 1%;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 100%;
+  }
   
   .container{
     animation: slideInFromLeft 1s ease-out;
@@ -60,5 +67,11 @@
   
   .options .sort input:checked + label{
     font-weight: 600;
+  }
+  
+  @media (max-width:768px) {
+    .filterIcon{
+      margin: 4% 2%;
+    }
   }
   

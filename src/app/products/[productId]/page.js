@@ -77,7 +77,7 @@ export async function generateStaticParams() {
         <div className={styles.presentation}>
           {lastThreeImages()}
           <div className={styles.presentationText}>
-            <h6>Convenience</h6>
+            <h6>Description</h6>
             <p>
               {product.description}
             </p>

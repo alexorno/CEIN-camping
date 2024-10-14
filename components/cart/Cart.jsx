@@ -5,7 +5,7 @@ import updateSaleRecordSql from '../../utils/updateSaleRecordSql';
 import styles from "./cart.module.css";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-
+/* disable scroll */
 const Cart = () => {
     const {setShowCart, cartItems, totalPrice, totalQuantities} = useStateContext();
     const [success, setSuccess] = useState(0);

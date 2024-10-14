@@ -41,7 +41,7 @@
   }
   .footer .socialMedia img{
     height: 20px;
-    width: auto;
+    /* width: auto; */
   }
   
   .footer .navigation{
@@ -82,5 +82,20 @@
   
    .footer .footerSupport :global(.main-black-btn){
     margin-top: 10%;
+   }
+
+   @media (max-width:768px){
+    .footer :global(.main-container){
+      flex-direction: column;
+    }
+
+    .footer .footerAddress, .footer .footerSupport,.footer .navigation{
+      width: 95%;
+      margin: 0 auto;
+    }
+
+    .footer h6{
+      margin: 5% 0;
+    }
    }
   
