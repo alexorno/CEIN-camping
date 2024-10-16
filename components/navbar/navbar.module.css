@@ -29,6 +29,7 @@
   }
   
   .container .cart{
+    padding: 0;
     height: 35px;
     width: 35px;
     margin: auto;
@@ -37,7 +38,10 @@
     border: 1px solid black;
     border-radius: 100%;
   }
-  
+
+  .container .cart img{
+    margin: auto;
+  }
 
 .categories{
   display: flex;
