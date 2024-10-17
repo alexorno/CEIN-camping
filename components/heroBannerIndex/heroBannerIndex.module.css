@@ -1,0 +1,98 @@
+
+.top{
+    width: 95vw;
+    margin: 2% auto 3% auto;
+  }
+  /* CENTER WITH MARGIN  */
+  .top h1{
+    display: block;
+    margin: auto;
+    font-size: 6vw;
+    font-weight: 700;
+    text-align: center;
+  }
+  .top span{
+    font-size: 3vw;
+    vertical-align: text-top;
+  }
+  .top p{
+    margin-left: 2.5%;
+    font-size: 2.5vw;
+  }
+  /* END */ 
+  .bottom{
+    display:  flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1%;
+  }
+  
+  .bottom .text{
+    width: 29%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .bottom .image{
+    width: 69%;
+    display: flex;
+    justify-content: center;
+  }
+  .bottom .text .originDate{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .bottom h3{
+    margin-top: 3%;
+    font-size: 2em;
+    font-weight: 500;
+  }
+  
+  .bottom p{
+    font-size: 13px;
+  }
+  
+  .bottom .description{
+    margin-bottom: 5%;
+  }
+  
+  .bottom button{
+    cursor:pointer;
+    width: 10%;
+    display: flex;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+  }
+
+  @media (max-width: 768px) {
+.top{
+  margin: 5% auto;
+}
+
+    .top h1{
+      font-size: 5.4vw;
+    }
+
+    .top p{
+      margin-left: 6vw;
+      font-size: 2vw;
+    }
+
+    .bottom{
+      flex-direction: column-reverse;
+    }
+
+    .bottom .text{
+      margin: 4% auto;
+      width: 100%;
+    }
+
+    .bottom .image{
+      width: 100%;
+    }
+  }

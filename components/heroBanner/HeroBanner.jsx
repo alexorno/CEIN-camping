@@ -1,48 +1,18 @@
-"use client"
-import React from "react";
-import { useState, useEffect } from "react";
-import styles from "./heroBanner.module.css";
+import React from 'react';
+import styles from "./HeroBanner.module.css";
 
-
-  
-
-export const HeroBanner = () => {    
-
-    return (
-        <>
-            <div className="main-container">
-                <div className={styles.top}>
-                    <h1>Gear up for Great Outdoors<span>&#174;</span></h1>
-                    <p>Premium Camping Gear </p>
-                </div>
-                <div className={styles.bottom}>
-                    <div className={styles.text}>
-                        <div>
-                            <div className={styles.originDate}>
-                                <p>Journal</p>
-                                <p>2023.2.21</p>
-                            </div>
-                            <h3>
-                                The practical bonfire stand.
-                            </h3>
-                        </div>
-                        <div>
-                            <p className={styles.description}>
-                                CEIN has released yet another playful bonfire stand.
-                                Its name is "Ringwo Moyase".As you can see, this bonfire stand is modeled after the ring, a stage familiar to boxing and professional wrestling.
-                            </p>
-                                <button>
-                                    <img src="/link-button.svg" />
-                                </button>
-                        </div>
-                    </div>
-
-                    <div className={styles.image}>
-                        <img src="/hero-first.png">
-                        </img>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+const HeroBanner = () => {
+  return (
+    <div className={styles.events}>
+        <p className={styles.title}>
+            Gear up for Great Outdoors®
+        </p>
+        <p className={styles.description}>
+            Premium Camping Gear
+        </p>
+        <img src='https://kvahiabqmr5ceih5.public.blob.vercel-storage.com/29318807325_a43308ffcc_k-X5HlbvmmfKVx2gNWqzoh4ew9OO1Zsa.jpg' />
+    </div>
+  )
 }
+
+export default HeroBanner

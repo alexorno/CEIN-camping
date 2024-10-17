@@ -34,3 +34,21 @@
     display: flex;
     justify-content: space-between;
   }
+
+@media (max-width:768px){
+    .title{
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    .description{
+      width: 100%;
+      font-size: 0.8em;
+    }
+
+    .details{
+      width: 100%;
+      font-size: 0.8em;
+      margin-top: 5%;
+    }
+  }

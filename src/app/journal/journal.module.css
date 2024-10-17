@@ -1,0 +1,171 @@
+
+.main{
+    position: relative;
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.container{
+    width: 50%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-left: 15px;
+  }
+  
+  .title, .description{
+    color: white;
+    margin: 0 1%;
+  }
+
+  .container :global(.main-btn){
+    margin-top: 2%;
+    padding: 2% 8%;
+  }
+  
+  .title{
+    font-size: 4vw;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+    .bgImage{
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  .header{
+    margin: 5% auto;
+  }
+
+  .header > h1{
+    font-size: 3em;
+    font-weight: 500;
+    line-height: 1em;
+  }
+
+  .categories{
+    display: flex;
+  }
+
+  .categories input{
+    visibility: hidden;
+    width: 0;
+  }
+
+  .categories :global(.main-black-btn){
+    padding: 1% 2%;
+    margin: 1% 0.5%;
+  }
+
+  .categories input:checked + label{
+    transition: all 200ms ease-in-out;
+    background-color: black;
+    color: white;
+  }
+
+  .firstPost{
+    padding: 0 15px;
+    display:  flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1%;
+  }
+  
+  .firstPost .text{
+    width: 29%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .firstPost .image{
+    width: 69%;
+    display: flex;
+    justify-content: center;
+  }
+  .firstPost .text .originDate{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .firstPost h3{
+    margin-top: 3%;
+    font-size: 2em;
+    font-weight: 500;
+  }
+  
+  .firstPost p{
+    font-size: 13px;
+  }
+  
+  .firstPost .description{
+    color: black;
+    margin-bottom: 5%;
+  }
+  
+  .firstPost button{
+    cursor:pointer;
+    width: 10%;
+    display: flex;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+  }
+
+
+@media (max-width:768px){
+
+    .container{
+      width: 100%;
+      text-align: center;
+    }
+
+    .title{
+        font-size: 2em;
+    }
+
+    .description{
+        overflow: hidden;
+       display: -webkit-box;
+       -webkit-line-clamp: 4; /* number of lines to show */
+               line-clamp: 4; 
+       -webkit-box-orient: vertical;
+      }
+
+    .container :global(.main-btn){
+        padding: 4% 13%;
+    }
+
+    .header{
+        margin: 10% auto;
+    }
+
+    .categories :global(.main-black-btn){
+        padding: 2% 4%;
+        margin: 2% 1%;
+      }
+
+      .firstPost{
+        flex-direction: column-reverse;
+      }
+  
+      .firstPost .text{
+        margin: 4% auto;
+        width: 100%;
+      }
+  
+      .firstPost .image{
+        width: 100%;
+      }
+}

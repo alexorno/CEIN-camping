@@ -1,5 +1,5 @@
 import React from 'react'
-import HeroBannerEvents from '../../../components/heroBannerEvents/HeroBannerEvents';
+import HeroBanner from '../../../components/heroBanner/HeroBanner';
 import Event from '../../../components/event/Event';
 import getEvents from '../../../utils/getEvents';
 
@@ -10,7 +10,7 @@ const page = async () => {
 
   return (
     <div>
-        <HeroBannerEvents />
+        <HeroBanner />
         {events.map(event => {
             return <Event data={event} key={event.id}/>
         })}

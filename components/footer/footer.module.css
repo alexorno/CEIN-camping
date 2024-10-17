@@ -94,6 +94,10 @@
       margin: 0 auto;
     }
 
+    .footer .footerAddress > img{
+      width: 50%;
+    }
+
     .footer h6{
       margin: 5% 0;
     }
