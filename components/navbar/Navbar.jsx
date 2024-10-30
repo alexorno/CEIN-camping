@@ -10,7 +10,9 @@ import styles from "./navbar.module.css";
 export const Navbar = () => {
     const [showCategory, setShowCategory] = useState(false);
     const category = useRef(null);
+    const mobileCategory = useRef(null);
     const categoryBtn = useRef(null);
+    const mobileCategoryBtn = useRef(null)
     const pathname = usePathname();
     const {showCart, setShowCart, totalQuantities} = useStateContext();
     // ref to have current state, not initial
@@ -21,7 +23,7 @@ export const Navbar = () => {
     // click outside element to close it
     useEffect(() => {
         function handleClickOutside(event) {
-            if (showCategoryRef.current && category.current && !category.current.contains(event.target) && !categoryBtn.current.contains(event.target)) {
+            if (showCategoryRef.current && category.current && !category.current.contains(event.target) && !categoryBtn.current.contains(event.target) && window.innerWidth > 768) {
                 setShowCategory(false)
             }
         }
@@ -59,10 +61,10 @@ export const Navbar = () => {
                     </Link>
                 </div>
                 <div className={styles.mobileCategories}>
-                    <button onClick={() => setShowCategory(!showCategory)} ref={categoryBtn}>
+                    <button onClick={() => setShowCategory(!showCategory)} ref={mobileCategoryBtn}>
                         <img src="/menu-svgrepo-com.svg" height={35} ></img>
                     </button>
-                        {showCategory ? <CategoriesList ref={category} closeCategory={() => setShowCategory(false)} /> : <></>}
+                        {showCategory ? <CategoriesList ref={mobileCategory} closeCategory={() => setShowCategory(false)} /> : <></>}
                 </div>
                 <div className={styles.right}>
                     <button className={styles.search}>
