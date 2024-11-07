@@ -19,7 +19,7 @@ const index = () => {
         if(query){
             setFilter(query)
         }
-    }, [])
+    }, [query])
     
     // getting products with filter or not
     useEffect(() => {

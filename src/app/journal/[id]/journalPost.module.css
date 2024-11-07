@@ -1,0 +1,82 @@
+.main{
+    border-bottom: 1px grey solid;
+}
+
+.heroBanner{
+    padding-top: 1%;
+    width: 100%;
+}
+
+.heroBanner > img{
+    width: 100%;
+    height: 65vh;
+    object-fit: cover;
+}
+
+.shareBar{
+    display: flex;
+    justify-content: space-between;
+    margin: 2% 0;
+}
+
+.shareBar > p{
+    margin: auto 0;
+}
+
+.shareButtons {
+    display: flex;
+    font-size: 0.8em;
+}
+
+.shareButtons a{
+    display: flex;
+    margin: auto 5px;
+    text-decoration: none;
+}
+
+.shareButtons button{
+    width: auto;
+    display: flex;
+    background: none;
+    border: none;
+    margin: 10%;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.shareButtons button img{
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+}
+
+.heroBannerContent{
+    width: 55%;
+}
+
+.heroBannerContent h1{
+    font-size: 2em;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.heroBannerContent p{
+    margin-bottom: 25px;
+}
+
+.recomendations{
+    display: flex;
+}
+
+@media (max-width:768px) {
+    .heroBanner > img{
+        height: 30vh;
+    }
+
+    .heroBannerContent{
+        width: 100%;
+    }
+
+    .recomendations{
+        display: block;
+    }
+}

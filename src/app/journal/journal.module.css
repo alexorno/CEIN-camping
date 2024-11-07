@@ -54,6 +54,8 @@
 
   .categories{
     display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   .categories input{
@@ -64,6 +66,8 @@
   .categories :global(.main-black-btn){
     padding: 1% 2%;
     margin: 1% 0.5%;
+    overflow: initial;
+
   }
 
   .categories input:checked + label{
@@ -88,10 +92,19 @@
   }
   
   .firstPost .image{
+    height: min-content;
     width: 69%;
     display: flex;
     justify-content: center;
   }
+
+  .firstPost .image img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+
   .firstPost .text .originDate{
     display: flex;
     justify-content: space-between;

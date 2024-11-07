@@ -186,6 +186,8 @@ export const Dashboard = ({setAuthFalse}) => {
       <p>{JSON.stringify(responseFileSend)}</p>
     </form>
 
+          <AddJournalEvent />
+
     <button className='main-btn'
       style={{color: 'black', margin: 'auto', display: 'flex', border: '1px solid black', padding: '1% 2%'}}
       onClick={() => setLogOut(true)}
@@ -194,5 +196,72 @@ export const Dashboard = ({setAuthFalse}) => {
     </>
     )
   }
+
+  const AddJournalEvent = () => {
+    const [sendLoading, setSendLoading] = useState(false);
+    const [responseFileSend, setResponseFileSend] = useState();
+    const inputFileRef = useRef();
+
+    const journalEventSend = async (event) => {
+      event.preventDefault();
+      await setSendLoading(true)
+      const urlList =[];
+      // uploading images to blob and adding to array
+      for(const fileRef of inputFileRef.current.files){
+          const file = fileRef;
+
+          const newBlob = await upload(file.name, file, {
+          access: 'public',
+          handleUploadUrl: 'api/avatar/upload',
+          });
+
+          urlList.push(newBlob)
+      }
+      // getting values from form and formatting
+      const formData = new FormData(event.target);
+      const formObject = Object.fromEntries(formData);
+      // console.log(formObject)
+      delete formObject.file;
+      formObject.urls = urlList;
+      fetch('/api/uploadJournalEvent', {
+          method: "POST",
+          body: JSON.stringify(formObject),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+              setSendLoading(false);
+              setResponseFileSend(data)
+          });
+  }
+
+    return(
+      <form className='admin-login' onSubmit={() => journalEventSend(event)}>
+      <h3>Add Journal Event</h3>
+      <label htmlFor='images'>Images:</label>
+      <input name="images" ref={inputFileRef} type="file" multiple/>
+      <label htmlFor="title">Title:</label>
+      <input type='text' name='title'/>
+      <label htmlFor="subtitle">Subtitle:</label>
+      <textarea type='text' name='subtitle'/>
+      <label htmlFor="content">Content:</label>
+      <textarea type='text' name='content'/>
+     
+      <label htmlFor='product_title'>Title of product:</label>
+      <input type='text' name='product_title' />
+      <label htmlFor='product_link'>Link to that product:</label>
+      <input type='text' name='product_link' />
+      <label htmlFor='tags'>Tags:  (should be written in form of Tag, tag2, tag3...)</label>
+      <input type='text' name='tags' />
+
+      {sendLoading ? 
+    <p style={{display: 'flex', justifyContent: 'center'}}>Loading....</p> 
+    : 
+    <input type='submit' value="Submit"/>}
+    <p>{JSON.stringify(responseFileSend)}</p>
+  </form>
+    )
+  }
+
+
 
   export default Dashboard;
