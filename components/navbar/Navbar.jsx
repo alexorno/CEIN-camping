@@ -9,6 +9,7 @@ import styles from "./navbar.module.css";
 
 export const Navbar = () => {
     const [showCategory, setShowCategory] = useState(false);
+    const [categories, setCategories] = useState([])
     const category = useRef(null);
     const mobileCategory = useRef(null);
     const categoryBtn = useRef(null);
@@ -38,6 +39,16 @@ export const Navbar = () => {
         setShowCategory(false); // close menu if path changes!
     }, [ pathname ]);
 
+    useEffect(() => {
+        fetch('/api/getCategories',{
+            cache: "force-cache",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setCategories(data)
+            })
+    }, [])
+
     return (
         <nav className={styles.container} >
             <div className="main-container">
@@ -49,7 +60,7 @@ export const Navbar = () => {
                 <div className={styles.center}>
                     {/* <Link href='/products'>shop</Link> */}
                     <button onClick={() => setShowCategory(!showCategory)} ref={categoryBtn}>Shop</button>
-                    {showCategory ? <CategoriesList ref={category} closeCategory={() => setShowCategory(false)} /> : <></>}
+                    {showCategory ? <CategoriesList data={categories} ref={category}/> : <></>}
                     <Link href={`/events`}>
                         <button>events</button>
                     </Link>
@@ -64,7 +75,7 @@ export const Navbar = () => {
                     <button onClick={() => setShowCategory(!showCategory)} ref={mobileCategoryBtn}>
                         <img src="/menu-svgrepo-com.svg" height={35} ></img>
                     </button>
-                        {showCategory ? <CategoriesList ref={mobileCategory} closeCategory={() => setShowCategory(false)} /> : <></>}
+                        {showCategory ? <CategoriesList data={categories} /> : <></>}
                 </div>
                 <div className={styles.right}>
                     <button className={styles.search}>
@@ -88,22 +99,9 @@ export const Navbar = () => {
 }
 
 const CategoriesList = forwardRef(function MyInput(props, ref) {
-
-    const [categories, setCategories] = useState([])
-
-    useEffect(() => {
-        fetch('/api/getCategories',{
-            cache: "force-cache",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setCategories(data)
-            })
-    }, [])
-
     return (
         <div className={styles.categories} ref={ref}>
-            {categories.map((category) => {
+            {props.data.map((category) => {
                 return (
                     <div className={styles.category} key={category.id}>
                         <Link href={'/categories/' + category.id}>
