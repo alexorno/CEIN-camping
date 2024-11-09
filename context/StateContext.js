@@ -1,5 +1,6 @@
 'use client';
 import React, { createContext, useContext, useState, useEffect } from "react";
+import updateSaleRecordSql from "../utils/updateSaleRecordSql";
 
 const Context = createContext();
 // FIX JUMPING DURING CHANGE OF QTY WITH MULTIPLE PRODUCTS
@@ -8,6 +9,7 @@ export const StateContext = ({children}) => {
     const [cartItems, setCartItems] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalQuantities, setTotalQuantities] = useState(0)
+    const [success, setSuccess] = useState(0)
 
     
     const onAdd = (product) => {
@@ -61,6 +63,12 @@ export const StateContext = ({children}) => {
             localStorage.removeItem('itemsTotalQty')
         }
     }
+
+    const clearCart = () => {
+        setCartItems([]);
+        setTotalPrice(0);
+        setTotalQuantities(0)
+    }
     
     useEffect(() => {
         if(cartItems.length !== 0){
@@ -81,6 +89,22 @@ export const StateContext = ({children}) => {
             setTotalQuantities(JSON.parse(storageQty))
         }
       }, [])
+
+      useEffect(() => {
+            // Check to see if this is a redirect back from Checkout
+            const query = new URLSearchParams(window.location.search);
+            if (query.get('success')) {
+              async function updateData(){
+                  await updateSaleRecordSql(cartItems)
+              }
+              updateData()
+              clearCart()
+            }
+        
+            if (query.get('canceled')) {
+            //   console.log('Order canceled -- continue to shop around and checkout when you’re ready.');
+            }
+          }, []);
     
     
     return (

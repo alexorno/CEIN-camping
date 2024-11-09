@@ -35,6 +35,7 @@
 }
 
 .shareButtons button{
+    cursor: pointer;
     width: auto;
     display: flex;
     background: none;

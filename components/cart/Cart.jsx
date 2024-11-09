@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import { useStateContext } from '../../context/StateContext';
 import { loadStripe } from "@stripe/stripe-js";
 import updateSaleRecordSql from '../../utils/updateSaleRecordSql';
@@ -8,30 +8,27 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 /* disable scroll */
 const Cart = () => {
     const {setShowCart, cartItems, totalPrice, totalQuantities} = useStateContext();
-    const [success, setSuccess] = useState(0);
-// fix salenumber update
-    useEffect(() => {
-        async function fetchData() {
-          // You can await here
-          await updateSaleRecordSql(cartItems)
-          // ...
-        }
-        fetchData();
-      }, [success]);
+    const cartContainer = useRef(null);
+    const closeButton = useRef(null);
 
     useEffect(() => {
-        // Check to see if this is a redirect back from Checkout
-        const query = new URLSearchParams(window.location.search);
-        if (query.get('success')) {
-          console.log('Order placed! You will receive an email confirmation.');
-          setSuccess(success + 1);
-        }
-    
-        if (query.get('canceled')) {
-          console.log('Order canceled -- continue to shop around and checkout when you’re ready.');
-        }
-      }, []);
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "scroll"
+        };
+    }, []);
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (cartContainer.current && !cartContainer.current.contains(event.target) && !closeButton.current.contains(event.target)) {
+                setShowCart(false)
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    } );
 
       const handleSubmit = async (e) => {
         // e.preventDefault();
@@ -57,12 +54,12 @@ const Cart = () => {
       
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={cartContainer}>
         <div className={styles.name}>
             <p>
                 Cart
             </p>
-            <button onClick={() => setShowCart(false)}>
+            <button onClick={() => setShowCart(false)} ref={closeButton}>
                 <img src='/close-svgrepo-com.svg' height={25} width={25}/>
             </button>
         </div>

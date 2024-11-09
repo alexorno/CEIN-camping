@@ -99,7 +99,7 @@
   
   .item .qtyChange{
     display: flex;
-    width: 40%;
+    width: 90px;
     border: 1px solid black;
     border-radius: 20px;
     font-size: 1.2em;

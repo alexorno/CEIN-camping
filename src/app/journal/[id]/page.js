@@ -21,11 +21,9 @@ export async function generateStaticParams() {
   export default async function Page({ params }) {
     const post = await getJournalPostById(params.id)
 
-    const {id, title, subtitle, content, images,product_title,product_url, updated_at, tags} = post;
+    const {id, title, subtitle, content, images, product_title, product_url, updated_at, tags} = post;
     let recomendations = await getJournalPostByTag(tags, 3, 0, id)
-    console.log(recomendations)
     if(recomendations.length===0){
-      console.log('notning')
       recomendations = await getJournalPosts(3)
     }
     return (
@@ -41,12 +39,12 @@ export async function generateStaticParams() {
                   <Link href={'/'}>
                     <button>Share</button>
                   </Link>
-                  <Link href={'/'}>
+                  <Link href={'https://facebook.com'}>
                     <button>
                       <img src="/5305153_fb_facebook_facebook logo_icon.svg" alt="facebook-icon"/>
                     </button>
                   </Link>
-                  <Link href={'/'}>
+                  <Link href={'https://x.com'}>
                     <button>
                       <img src="/5305170_bird_social media_social network_tweet_twitter_icon.svg" alt="twitter-icon"/>
                     </button>

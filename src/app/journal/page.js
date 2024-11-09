@@ -46,27 +46,18 @@ const page = () => {
           <input defaultChecked type="radio" name="filter" id="feature" value={'feature'} onClick={(e)=>handleRadioOption(e)}/>
           <label htmlFor='feature' className='main-black-btn'>Feature</label>
 
-          <input type="radio" name="filter" id="information" value={'portable'}  onClick={(e)=>handleRadioOption(e)}/>
-          <label htmlFor='information' className='main-black-btn'>Information</label>
+          <input type="radio" name="filter" id="new" value={'new'}  onClick={(e)=>handleRadioOption(e)}/>
+          <label htmlFor='new' className='main-black-btn'>New</label>
 
-          <input type="radio" name="filter" id="lifestyle" value={'winter'} onClick={(e)=>handleRadioOption(e)}/>
-          <label htmlFor='lifestyle' className='main-black-btn'>Life Style</label>
-
-          <input type="radio" name="filter" id="lifestyle" value={'winter'} onClick={(e)=>handleRadioOption(e)}/>
-          <label htmlFor='lifestyle' className='main-black-btn'>Life Style</label>
-
-          <input type="radio" name="filter" id="lifestyle" value={'winter'} onClick={(e)=>handleRadioOption(e)}/>
-          <label htmlFor='lifestyle' className='main-black-btn'>Life Style</label>
-
-          <input type="radio" name="filter" id="lifestyle" value={'winter'} onClick={(e)=>handleRadioOption(e)}/>
-          <label htmlFor='lifestyle' className='main-black-btn'>Life Style</label>
+          <input type="radio" name="filter" id="info" value={'info'} onClick={(e)=>handleRadioOption(e)}/>
+          <label htmlFor='info' className='main-black-btn'>Information</label>
         </div>
       </div>
-      {/* 1if loading,2 vw>768 show vertical post */}
-      {loading ? 'loading...' : (isMobile ? <FirstPost post={posts[0]}/> : <JournalPostVertical post={posts[0]}  /> ) }
+      {/* 1if loading,2 check if posts not empty, 3 viewportwidth>768 show vertical post */}
+      {loading ? <img src='/loading.gif' alt='loading' width={50} height={50} style={{margin: 'auto'}}/> : (posts.length>0 ? (isMobile ? <FirstPost post={posts[0]}/> : <JournalPostVertical post={posts[0]}  /> ) : 'No posts right now with such tag') }
       
       <div style={{display: (isMobile ? 'flex' : 'block')}}>
-        {loading && posts.length>1 ? 'loading..' : 
+        {loading && posts.length>1 ? '' : 
         posts.slice(1).map(post => <JournalPostVertical post={post} key={post.id}/>)}
       </div>
 
@@ -90,13 +81,13 @@ const HeroBannerJournal = ({title, description, imageURL}) => {
           <button className='main-btn'>Shop Now</button>
         </Link>
     </div>
-    <img className={styles.bgImage} src='/nature-landscape-nature-night-c9d1f081ac901fb80f20762c1e9c2c07 Medium.jpeg' />
+    <img className={styles.bgImage} src={imageURL || '/nature-landscape-nature-night-c9d1f081ac901fb80f20762c1e9c2c07 Medium.jpeg'} />
   </div>
   )
 }
 
 
-const FirstPost = ({post}) => {
+export const FirstPost = ({post}) => {
   const {title, subtitle, id, images} = post;
 
   return (

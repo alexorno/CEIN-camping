@@ -181,4 +181,8 @@
       .firstPost .image{
         width: 100%;
       }
+
+      .firstPost .image img{
+        height: 250px;
+      }
 }

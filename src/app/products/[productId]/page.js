@@ -60,16 +60,20 @@ export async function generateStaticParams() {
               ${product.price}
               </p>
               <p>
-                <img src="/heart-svgrepo-com.svg" style={{display: 'inline', height: '1em'}}/> Wishlist
+                {/* <img src="/heart-svgrepo-com.svg" style={{display: 'inline', height: '1em'}}/> Wishlist */}
               </p>
             </div>
             <div className={styles.color}>
               <p>Color:</p>
-              {product.color || 'Standart'}
+              {product.color || 'As shown'}
             </div>
             <ButtonClick product={product}/>
             <div className={styles.payments}>
-              payment icons
+              <img src="/icons8-apple-pay.svg" alt="payment-icon"/>
+              <img src="/icons8-google-pay.svg" alt="payment-icon"/>
+              <img src="/icons8-mastercard.svg" alt="payment-icon"/>
+              <img src="/icons8-visa.svg" alt="payment-icon"/>
+              <img src="/icons8-paypal.svg" alt="payment-icon"/>
             </div>
           </div>
         </div>

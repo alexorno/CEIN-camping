@@ -52,7 +52,14 @@
 }
 
 .info .payments {
-    margin: 2% 0;
+    width: 80%;
+    display: flex;
+    margin: 4% 0;
+}
+
+.info .payments img{
+    width: 30px;
+    margin: 0 2%;
 }
 
 .presentation {
