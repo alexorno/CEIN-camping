@@ -3,13 +3,19 @@ import Link from 'next/link';
 import React from 'react'
 
 export const Product = ({product}) => {
-    const {productid, name, description, price, images, category_name} = product;
+    if (!product) {
+        return null;
+    }
+
+    const {productid, name, price, images = [], category_name} = product;
+    const imageUrl = Array.isArray(images) && images.length > 0 && images[0]?.url
+        ? images[0].url
+        : '/no-image-available.png';
 
   return (
     <div className='main-product'>
         <Link href={`/products/${productid}`}>
-            {/* <img src={product.images[0].url} /> */}
-            { images.length>0 ? <img src={images[0].url} /> : <img src='/no-image-available.png' alt='no image available' />}
+            <img src={imageUrl} alt={name || 'Product image'} />
             <div className='category-price'>
                 <h6>{category_name}</h6>
                 <p> {price}$</p>

@@ -1,4 +1,5 @@
 "use server"
+import { notFound } from "next/navigation";
 import { sql } from "@vercel/postgres";
 import getSortedProducts from "../../../../utils/getProducts";
 import getProductById from "../../../../utils/getProductInfoById";
@@ -10,7 +11,7 @@ export async function generateStaticParams() {
   const products = await getSortedProducts();
 
    return products.map((product) => ({
-    id: (product.productid).toString(),
+    productId: (product.productid).toString(),
   }))
 
   }
@@ -18,9 +19,13 @@ export async function generateStaticParams() {
   export default async function Page({ params }) {
     const product = await getProductById(params.productId);
 
+    if (!product) {
+      notFound();
+    }
+
     // preparing array for gallery
     const images = []
-    if(product.images.length > 0){
+    if(Array.isArray(product.images) && product.images.length > 0){
         product.images.map((image) => {
           images.push({original: image.url})
       })

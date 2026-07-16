@@ -11,9 +11,23 @@ export const Dashboard = ({setAuthFalse}) => {
     const [categories, setCategories] = useState([]);
     const [colors, setColors] = useState([])
     
-    useEffect(async () => {
-      setColors(await getColors())
-    },[])
+    useEffect(() => {
+      let isActive = true;
+
+      getColors()
+        .then((data) => {
+          if (isActive) {
+            setColors(data);
+          }
+        })
+        .catch((error) => {
+          console.error('Failed to load colors:', error);
+        });
+
+      return () => {
+        isActive = false;
+      };
+    }, [])
 
     useEffect(() => {
       fetch('/api/getCategories')
@@ -37,27 +51,25 @@ export const Dashboard = ({setAuthFalse}) => {
     }
     }, [logOut])
 
-    const inputFileRef = useRef();
+    const productInputFileRef = useRef(null);
 
     const fileSend = async (event) => {
         event.preventDefault();
         await setSendLoading(true)
         const urlList =[];
         // uploading images to blob and adding to array
-        for(const fileRef of inputFileRef.current.files){
+        for (const fileRef of productInputFileRef.current?.files || []) {
             const file = fileRef;
 
             const newBlob = await upload(file.name, file, {
             access: 'public',
-            handleUploadUrl: 'api/avatar/upload',
+            handleUploadUrl: '/api/avatar/upload',
             });
-            // console.log('new', newBlob)
             urlList.push(newBlob)
         }
         // getting values from form and formatting
         const formData = new FormData(event.target);
         const formObject = Object.fromEntries(formData);
-        // console.log(formObject)
         delete formObject.file;
         formObject.urls = urlList;
         fetch('/api/uploadProduct', {
@@ -71,17 +83,19 @@ export const Dashboard = ({setAuthFalse}) => {
             });
     }
 
+    const eventInputFileRef = useRef(null);
+
     const eventSend = async (event) => {
       event.preventDefault();
       await setSendLoading(true)
       const urlList =[];
       // uploading images to blob and adding to array
-      for(const fileRef of inputFileRef.current.files){
+      for (const fileRef of eventInputFileRef.current?.files || []) {
           const file = fileRef;
 
           const newBlob = await upload(file.name, file, {
           access: 'public',
-          handleUploadUrl: 'api/avatar/upload',
+          handleUploadUrl: '/api/avatar/upload',
           });
 
           urlList.push(newBlob)
@@ -106,10 +120,10 @@ export const Dashboard = ({setAuthFalse}) => {
 
     return (
     <>
-      <form className='admin-login' onSubmit={() => fileSend(event)}>
+      <form className='admin-login' onSubmit={(event) => fileSend(event)}>
         <h3>Add product</h3>
         <label htmlFor='file' >Images:</label>
-          <input name="file" ref={inputFileRef} type="file" multiple required />
+          <input name="file" ref={productInputFileRef} type="file" multiple required />
         <label htmlFor="name">Name:</label>
           <input type='text' name='name'/>
         <label htmlFor="description">Description:</label>
@@ -156,10 +170,10 @@ export const Dashboard = ({setAuthFalse}) => {
   
 
 
-    <form className='admin-login' onSubmit={() => eventSend(event)}>
+    <form className='admin-login' onSubmit={(event) => eventSend(event)}>
         <h3>Add event</h3>
         <label htmlFor='images'>Images:</label>
-        <input name="images" ref={inputFileRef} type="file" multiple/>
+        <input name="images" ref={eventInputFileRef} type="file" multiple/>
         <label htmlFor="title">Title:</label>
         <input type='text' name='title'/>
         <label htmlFor="description">Description:</label>
@@ -200,19 +214,20 @@ export const Dashboard = ({setAuthFalse}) => {
   const AddJournalEvent = () => {
     const [sendLoading, setSendLoading] = useState(false);
     const [responseFileSend, setResponseFileSend] = useState();
-    const inputFileRef = useRef();
+    const journalInputFileRef = useRef(null);
 
     const journalEventSend = async (event) => {
       event.preventDefault();
       await setSendLoading(true)
       const urlList =[];
       // uploading images to blob and adding to array
-      for(const fileRef of inputFileRef.current.files){
+      
+      for (const fileRef of journalInputFileRef.current?.files || []) {
           const file = fileRef;
 
           const newBlob = await upload(file.name, file, {
           access: 'public',
-          handleUploadUrl: 'api/avatar/upload',
+          handleUploadUrl: '/api/avatar/upload',
           });
 
           urlList.push(newBlob)
@@ -235,10 +250,10 @@ export const Dashboard = ({setAuthFalse}) => {
   }
 
     return(
-      <form className='admin-login' onSubmit={() => journalEventSend(event)}>
+      <form className='admin-login' onSubmit={(event) => journalEventSend(event)}>
       <h3>Add Journal Event</h3>
       <label htmlFor='images'>Images:</label>
-      <input name="images" ref={inputFileRef} type="file" multiple/>
+      <input name="images" ref={journalInputFileRef} type="file" multiple/>
       <label htmlFor="title">Title:</label>
       <input type='text' name='title'/>
       <label htmlFor="subtitle">Subtitle:</label>
