@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./HeroBanner.module.css";
+import styles from "./heroBanner.module.css";
 
 const HeroBanner = () => {
   return (
